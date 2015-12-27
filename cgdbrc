@@ -1,0 +1,2 @@
+# Need to copy this file to $HOME/.cgdb/cgdbrc, there is no 'source' command for cgdb conf file
+highlight SelectedLineNr ctermfg=Black ctermbg=White
