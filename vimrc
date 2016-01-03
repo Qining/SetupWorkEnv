@@ -1,21 +1,8 @@
-" Welcome to Vim (http://go/vim).
-"
-" If you see this file, your homedir was just created on this workstation.
-" That means either you are new to Google (in that case, welcome!) or you
-" got yourself a faster machine.
-" Either way, the main goal of this configuration is to help you be more
-" productive; if you have ideas, praise or complaints, direct them to
-" vi-users@google.com (http://g/vi-users). We'd especially like to hear from you
-" if you can think of ways to make this configuration better for the next
-" Noogler.
-" If you want to learn more about Vim at Google, see http://go/vimintro.
-
 " Enable modern Vim features not compatible with Vi spec.
-set nocompatible
-
-" Use the 'google' package by default (see http://go/vim/packages).
-source /usr/share/vim/google/google.vim
-
+"
+" source to this file after:
+" set nocompatible
+" <source-to-google.vim>
 
 " All of your plugins must be added before the following line.
 
@@ -41,7 +28,8 @@ Plugin 'scrooloose/syntastic'
 " It seems 'google' package already contains 'clang linter'
 " And adding it again will cause some conflit, so it is
 " Not enabled by default.
-"Plugin 'rhysd/vim-clang-format'
+Plugin 'rhysd/vim-clang-format'
+let g:clang_format#code_style = "google"
 
 " airline settings
 set laststatus=2
