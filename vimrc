@@ -25,11 +25,13 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'scrooloose/syntastic'
-" It seems 'google' package already contains 'clang linter'
-" And adding it again will cause some conflit, so it is
-" Not enabled by default.
-Plugin 'rhysd/vim-clang-format'
-let g:clang_format#code_style = "google"
+" It seems 'google' package already contains 'clang linter'.
+" And adding it again will cause some conflit, check the existence before
+" installing this plugin.
+if !exists(':ClangFormat')
+  Plugin 'rhysd/vim-clang-format'
+  let g:clang_format#code_style = "google"
+endif
 
 " airline settings
 set laststatus=2
