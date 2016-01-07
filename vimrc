@@ -3,6 +3,8 @@
 " source to this file after:
 " set nocompatible
 " <source-to-google.vim>
+" filetype plugin indent on
+" syntax on
 
 " All of your plugins must be added before the following line.
 
@@ -28,10 +30,9 @@ Plugin 'scrooloose/syntastic'
 " It seems 'google' package already contains 'clang linter'.
 " And adding it again will cause some conflit, check the existence before
 " installing this plugin.
-if !exists(':ClangFormat')
-  Plugin 'rhysd/vim-clang-format'
-  let g:clang_format#code_style = "google"
-endif
+" Plugin 'rhysd/vim-clang-format'
+" let g:clang_format#code_style = "google"
+
 
 " airline settings
 set laststatus=2
