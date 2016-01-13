@@ -72,7 +72,11 @@ syntax on
 if has('mouse')
   set mouse=a
 endif
+
+"set hidden
 set backspace=indent,eol,start
+set autoindent
+set copyindent
 set nu
 set tabstop=4
 set shiftwidth=4
@@ -82,3 +86,22 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set autoread
+set wildmenu
+set showmatch
+set title
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" need at least 15 lines before and after my cursor
+set scrolloff=15
+
+" use system clipboard as unnamed register
+set clipboard=unnamed,unnamedplus
+
+" keep search result at the center
+nnoremap n nzz
+nnoremap N Nzz
+
