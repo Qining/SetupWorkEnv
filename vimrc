@@ -63,7 +63,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " F5 to force recompilation
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " Auto load config file
-let g:ycm_confirm_extra_conf = 0\
+let g:ycm_confirm_extra_conf = 0
 " Set to collect tags from tag files (:h 'tags' for more info)
 let g:ycm_collect_identifiers_from_tags_files=1
 
