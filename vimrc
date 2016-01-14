@@ -27,6 +27,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'scrooloose/syntastic'
+
+" Toggle comments faster
+" <leader>cc : set to comment
+" <leader>cu : cancel comment
+Plugin 'scrooloose/nerdcommenter'
+
 " It seems 'google' package already contains 'clang linter'.
 " And adding it again will cause some conflit, check the existence before
 " installing this plugin.
@@ -34,31 +40,38 @@ Plugin 'scrooloose/syntastic'
 " let g:clang_format#code_style = "google"
 
 
-" airline settings
+"""" airline settings
 set laststatus=2
 set t_Co=256
 
-" NerdTree settings
+"""" NerdTree settings
+" Toogle folder tree split
 map <leader>ne :NERDTree<CR>
+" Rational way to move between splits, this is not only for NerdTree.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Wrap paragraphs
-map Q gq
+"""" NerdCommenter settings
+" Add a blank space before commented content
+let g:NERDSpaceDelims=1
 
-" To make undo work correctly
-inoremap <C-U> <C-G>u<C-U>
-inoremap <C-W> <C-G>u<C-W>
-
-" YCM settings
+"""" YCM settings
+" Set goto def/decl with <leader>jd
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" F5 to force recompilation
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_confirm_extra_conf = 0
+" Auto load config file
+let g:ycm_confirm_extra_conf = 0\
+" Set to collect tags from tag files (:h 'tags' for more info)
 let g:ycm_collect_identifiers_from_tags_files=1
 
-" syntastics settings
+" Don't forget to use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to generate
+" compile command json file, then set 'compilation_data_base_folder' to the
+" directory of the generated json file.
+
+"""" syntastics settings
 let g:syntastic_always_populate_loc_list=1
 
 call vundle#end()            " required
@@ -104,4 +117,12 @@ set clipboard=unnamed,unnamedplus
 " keep search result at the center
 nnoremap n nzz
 nnoremap N Nzz
+
+" Wrap paragraphs
+map Q gq
+
+" To make undo work correctly
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
 
