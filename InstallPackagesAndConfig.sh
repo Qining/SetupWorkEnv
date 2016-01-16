@@ -10,6 +10,15 @@ sudo apt-get install ipython
 sudo apt-get install cgdb
 sudo apt-get install meld
 sudo apt-get install clang-format-3.6
+sudo apt-get install libnotify
+
+# Install IRC app
+#sudo apt-get install irssi
+# To add notification for irssi, go to:
+# https://github.com/stickster/irssi-libnotify
+# But note to modify the paths in notifier.pl
+# The default paths assume irssi-notify.sh is in  $HOME/bin/,
+# mine usually is $HOME/Workspace/bin/
 
 # For clipboard tunneling to/from tmux
 sudo apt-get install xclip
