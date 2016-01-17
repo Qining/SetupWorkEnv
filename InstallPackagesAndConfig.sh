@@ -53,14 +53,16 @@ mkdir -p $HOME/Workspace/tmp
 mkdir -p $HOME/Workspace/patches
 
 # Download and install rtags
+# More info and setup for project: https://github.com/Andersbakken/rtags
 git clone --recursive https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 cd $HOME/Workspace/tools/rtags
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
 make
 cd $HOME/Workspace/bin
 ln -s $HOME/Workspace/tools/rtags/bin/* ./
-
 cd $HOME/Workspace/bin
 ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
+
+
