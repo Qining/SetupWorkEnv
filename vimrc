@@ -33,6 +33,13 @@ Plugin 'scrooloose/syntastic'
 " <leader>cu : cancel comment
 Plugin 'scrooloose/nerdcommenter'
 
+" vim rtags binding
+" common usage:
+" <leader>rf : find references
+" <leader>rj : go to definiation
+" <leader>rw : rename symbol under cursor (not tested)
+Plugin 'lyuts/vim-rtags'
+
 " It seems 'google' package already contains 'clang linter'.
 " And adding it again will cause some conflit, check the existence before
 " installing this plugin.
@@ -113,6 +120,8 @@ set scrolloff=15
 
 " use system clipboard as unnamed register
 set clipboard=unnamed,unnamedplus
+" paste directly from system clipboard
+nnoremap "+p p
 
 " keep search result at the center
 nnoremap n nzz

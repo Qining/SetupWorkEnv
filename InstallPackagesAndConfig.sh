@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $HOME
+
 sudo apt-get update
 sudo apt-get install build-essential
 sudo apt-get install cmake
@@ -23,6 +25,11 @@ sudo apt-get install libnotify
 # For clipboard tunneling to/from tmux
 sudo apt-get install xclip
 
+# To use rtags and vim-rtags (the installation of vim-rtags is handled in
+# vimrc), we have to install clang library.
+sudo apt-get install libclang-dev
+
+# Use Vundle to manage vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Set the key repeat rate to the max (or key repeat interval to the least).
@@ -38,3 +45,22 @@ sudo kbdrate -r 30
 wget https://raw.githubusercontent.com/Valloric/ycmd/master/cpp/ycm/.ycm_exra_conf.py \
   -O $HOME/ycm_default_conf.py
 
+# Make Workspace directory
+mkdir -p $HOME/Workspace/bin
+mkdir -p $HOME/Workspace/lib
+mkdir -p $HOME/Workspace/tools
+mkdir -p $HOME/Workspace/tmp
+mkdir -p $HOME/Workspace/patches
+
+# Download and install rtags
+git clone --recursive https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
+cd $HOME/Workspace/tools/rtags
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+make
+cd $HOME/Workspace/bin
+ln -s $HOME/Workspace/tools/rtags/bin/* ./
+
+cd $HOME/Workspace/bin
+ln -s $HOME/Workspace/tools/rtags/bin/* ./
+# Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
+# terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
