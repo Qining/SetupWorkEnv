@@ -46,6 +46,12 @@ Plugin 'lyuts/vim-rtags'
 " Plugin 'rhysd/vim-clang-format'
 " let g:clang_format#code_style = "google"
 
+call vundle#end()            " required
+" Personal plugins end
+
+" Enable file type based indent configuration and syntax highlighting.
+filetype plugin indent on
+syntax on
 
 """" airline settings
 set laststatus=2
@@ -80,13 +86,6 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 """" syntastics settings
 let g:syntastic_always_populate_loc_list=1
-
-call vundle#end()            " required
-" Personal plugins end
-
-" Enable file type based indent configuration and syntax highlighting.
-filetype plugin indent on
-syntax on
 
 " Personal settings
 if has('mouse')
@@ -134,4 +133,6 @@ map Q gq
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 
+" Sets the copy paste buffer large enough
+set viminfo-='20,<1000,s1000
 
