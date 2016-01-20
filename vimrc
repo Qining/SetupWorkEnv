@@ -136,3 +136,7 @@ inoremap <C-W> <C-G>u<C-W>
 " Sets the copy paste buffer large enough
 set viminfo-='20,<1000,s1000
 
+" Automatically set file type to nasm if file extension is '.nasm'.
+" Syntastics checker also relies on this to enable nasm checker.
+" au is short for autocmd
+au BufRead,BufNewFile *.nasm set filetype=nasm
