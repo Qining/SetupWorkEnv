@@ -110,17 +110,20 @@ set wildmenu
 set showmatch
 set title
 
-" move vertically by visual line
+" Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
 
-" need at least 15 lines before and after my cursor
+" Need at least 15 lines before and after my cursor
 set scrolloff=15
 
-" use system clipboard as unnamed register
-set clipboard=unnamed,unnamedplus
-" paste directly from system clipboard
-nnoremap "+p p
+" Use system clipboard with 'intuitive' keys
+" These maps work in visual and insert mode, so I
+" don't need to worry about conflicts.
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
 
 " keep search result at the center
 nnoremap n nzz
