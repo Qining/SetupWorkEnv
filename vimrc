@@ -178,7 +178,7 @@ set title
  set background=dark
 " let g:solarized_termmcolors=256
 " colorscheme solarized
-" highlight Normal ctermbg=none
+highlight Normal ctermbg=none
 colorscheme desertEx
 
 " Move vertically by visual line

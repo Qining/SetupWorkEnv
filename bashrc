@@ -5,8 +5,18 @@ export SVDIR=$HOME/Workspace/vokuhila-repo/vokuhila
 export TEMP=$HOME/Workspace/temp
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
-export TERM="xterm-256color"
+# originally set to TERM="xterm-256color", but it will cause problem with vim's
+# background color (set with colorscheme): only regions that are covered with
+# text will have the correct background color, other regions' color is not
+# changed!
+# Change to "screen-256color" according to:
+# http://superuser.com/questions/399296/256-color-support-for-vim-background-in-tmux/399326#399326
+export TERM="screen-256color"
 
 # Irrsi doesn't scroll in tmux out of box, add following alias to solve the
 # problem
 alias irssi='TERM=screen-256color irssi'
+
+# Use clang instead of gcc
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
