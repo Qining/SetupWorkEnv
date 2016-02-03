@@ -20,38 +20,48 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'Valloric/YouCompleteMe'
+
+" theme, colorscheme
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/rainbow_parentheses.vim'
+
+" motion, repeating
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-Plugin 'tell-k/vim-autopep8'
-Plugin 'scrooloose/syntastic'
+Plugin 'ntpeters/vim-better-whitespace'
 
-" Toggle comments faster
-" <leader>cc : set to comment
-" <leader>cu : cancel comment
-Plugin 'scrooloose/nerdcommenter'
-
-" vim rtags binding
-" common usage:
-" <leader>rf : find references
-" <leader>rj : go to definiation
-" <leader>rw : rename symbol under cursor (not tested)
+" programming
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'nathanaelkane/vim-indent-guides'
+  " vim rtags binding
+  " common usage:
+  " <leader>rf : find references
+  " <leader>rj : go to definiation
+  " <leader>rw : rename symbol under cursor (not tested)
 Plugin 'lyuts/vim-rtags'
-
-" It seems 'google' package already contains 'clang linter'.
-" And adding it again will cause some conflit, check the existence before
-" installing this plugin.
+  " It seems 'google' package already contains 'clang linter'.
+  " And adding it again will cause some conflit, check the existence before
+  " installing this plugin.
 " Plugin 'rhysd/vim-clang-format'
 " let g:clang_format#code_style = "google"
 
+  " Toggle comments faster
+  " <leader>cc : set to comment
+  " <leader>cu : cancel comment
+Plugin 'scrooloose/nerdcommenter'
+
+" language support
+Plugin 'klen/python-mode'
+Plugin 'plasticboy/vim-markdown'
+
+" IDE
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+
 call vundle#end()            " required
 " Personal plugins end
-
-" Enable file type based indent configuration and syntax highlighting.
-filetype plugin indent on
-syntax on
 
 """" airline settings
 set laststatus=2
@@ -76,7 +86,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " F5 to force recompilation
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " Auto load config file
-let g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf=0
 " Set to collect tags from tag files (:h 'tags' for more info)
 let g:ycm_collect_identifiers_from_tags_files=1
 
@@ -87,28 +97,89 @@ let g:ycm_collect_identifiers_from_tags_files=1
 """" syntastics settings
 let g:syntastic_always_populate_loc_list=1
 
-" Personal settings
+"""" vim-indent-guide options
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+"""" vim-easymotion settings
+" map easymotion prefix to <leader>
+map <leader> <Plug>(easymotion-prefix)
+" turn on smart case for vim-easymotion
+" just like set ignorecase and set smartcase
+let g:EasyMotion_smartcase=1
+" set <leader>s to bi-directional and over-windows search
+" need 2 char to trigger, i.e. <leader>s{char}{char}{label}
+nmap s <Plug>(easymotion-overwin-f3)
+" JK motions, use when in easymotion mode
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+
+"""" generic settings
+
+" Enable file type based indent configuration and syntax highlighting.
+filetype plugin indent on
+syntax on
+
+" enable mouse
 if has('mouse')
   set mouse=a
 endif
 
-"set hidden
+" Useful if you want to edit multiple buffers without saving the modifications
+" made to a buffer while loading other buffers.
+set hidden
+
+" how many lines of history VIM should remember
+set history=1000
+
 set backspace=indent,eol,start
+
+" autoindent (short for ai), copy indent from current line when starting a new
+" line.
 set autoindent
-set copyindent
+" smartindent (short for si), do smart auto indenting when starting a new line.
+set smartindent
+
+" show line number
 set nu
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set background=dark
+
+" the kind of folding used for the current window
+set foldmethod=syntax
+" the higher the foldlevel, the more folded regions are open
+" when set to 0, no fold is open.
+set foldlevel=100
+
+" tabstop=X (short for ts), number of spaces that a 'tab' counts
+" shiftwidth=X (short for sw), number of spaces to use for each step of auto
+" indent.
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+set expandtab
+
+" incremental search and highlight search result
 set incsearch
 set hlsearch
+
+" if /<lower case>, return both upper case and lower case results.
+" if /<upper case>, only return upper case results.
 set ignorecase
 set smartcase
+
+" auto read when a file is changed outside
 set autoread
+
 set wildmenu
 set showmatch
 set title
+
+" set colorscheme, still not understood
+ set background=dark
+" let g:solarized_termmcolors=256
+" colorscheme solarized
+" highlight Normal ctermbg=none
+colorscheme desertEx
 
 " Move vertically by visual line
 nnoremap j gj
@@ -139,7 +210,12 @@ inoremap <C-W> <C-G>u<C-W>
 " Sets the copy paste buffer large enough
 set viminfo-='20,<1000,s1000
 
+"""" programming helpers based on
+
 " Automatically set file type to nasm if file extension is '.nasm'.
 " Syntastics checker also relies on this to enable nasm checker.
 " au is short for autocmd
 au BufRead,BufNewFile *.nasm set filetype=nasm
+
+" in Makefile, don't expand tabs to spaces, we need REAL tabs.
+au FileType make set noexpandtab

@@ -14,6 +14,12 @@ sudo apt-get install meld
 sudo apt-get install clang-format-3.6
 sudo apt-get install libnotify
 
+# Install asciidoctor so that you can render .asciidoc file
+sudo apt-get install asciidoctor
+# also install python-pygments, otherwise asciidoctor complains missing
+# pygments.rb (this is because my doc it using it for highlight).
+sudo apt-get install python-pygments
+
 # Install IRC app
 #sudo apt-get install irssi
 # To add notification for irssi, go to:
