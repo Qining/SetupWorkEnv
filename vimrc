@@ -65,7 +65,6 @@ call vundle#end()            " required
 
 """" airline settings
 set laststatus=2
-set t_Co=256
 
 """" NerdTree settings
 " Toogle folder tree split
@@ -113,6 +112,22 @@ nmap s <Plug>(easymotion-overwin-f3)
 " JK motions, use when in easymotion mode
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
+
+"""" python-mode settings
+" turn off rope script
+let g:pymode_rope=0
+" select default lint checker
+let g:pymode_lint_checkers=['pyflakes', 'pep8', 'plint']
+" please don't panic if I don't add doc string to functions and classes
+let g:pymode_lint_ignore='C0111,'
+" show document
+let g:pymode_doc=1
+" bind 'K' to show doc
+let g:pymode_doc_bind='K'
+
+""" vim-markdown options
+" disable folding
+let g:vim_markdown_folding_disabled=1
 
 """" generic settings
 
@@ -180,6 +195,9 @@ set title
 " colorscheme solarized
 highlight Normal ctermbg=none
 colorscheme desertEx
+" to make vim color works correctly, have to tell vim we have a 256 color
+" terminal.
+set t_Co=256
 
 " Move vertically by visual line
 nnoremap j gj
