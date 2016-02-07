@@ -27,7 +27,12 @@ Plugin 'kien/rainbow_parentheses.vim'
 
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
+  " lighter search tool alternative to easy-motion
+  " <s> to search next, <S> to search previous
+Plugin 'justinmk/vim-sneak'
+  " fuzzy file search
 Plugin 'ctrlpvim/ctrlp.vim'
+
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -101,17 +106,19 @@ let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
 """" vim-easymotion settings
+" disable default mapping first
+let g:EasyMotion_do_mapping=0
 " map easymotion prefix to <leader>
-map <leader> <Plug>(easymotion-prefix)
+map <leader> <plug>(easymotion-prefix)
 " turn on smart case for vim-easymotion
 " just like set ignorecase and set smartcase
 let g:EasyMotion_smartcase=1
 " set <leader>s to bi-directional and over-windows search
 " need 2 char to trigger, i.e. <leader>s{char}{char}{label}
-nmap s <Plug>(easymotion-overwin-f3)
-" JK motions, use when in easymotion mode
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
+nmap s <plug>(easymotion-overwin-f2)
+" jk motions, use when in easymotion mode
+map <leader>j <plug>(easymotion-j)
+map <leader>k <plug>(easymotion-k)
 
 """" python-mode settings
 " turn off rope script
