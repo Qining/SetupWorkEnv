@@ -27,9 +27,9 @@ Plugin 'kien/rainbow_parentheses.vim'
 
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
-  " lighter search tool alternative to easy-motion
+  " lighter search tool alternative to easymotion
   " <s> to search next, <S> to search previous
-Plugin 'justinmk/vim-sneak'
+" Plugin 'justinmk/vim-sneak'
   " fuzzy file search
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -235,12 +235,31 @@ inoremap <C-W> <C-G>u<C-W>
 " Sets the copy paste buffer large enough
 set viminfo-='20,<1000,s1000
 
-"""" programming helpers based on
+"""" programming helpers based on file type
 
-" Automatically set file type to nasm if file extension is '.nasm'.
-" Syntastics checker also relies on this to enable nasm checker.
-" au is short for autocmd
-au BufRead,BufNewFile *.nasm set filetype=nasm
+augroup CSourceFile
+  au!
+  " Set to cindent for c family language.
+  au FileType c, cpp set cindent
+augroup END
 
-" in Makefile, don't expand tabs to spaces, we need REAL tabs.
-au FileType make set noexpandtab
+augroup PythonFile
+  au!
+  " Set to cindent for c family language.
+  " Assume the yapf lib directory is at $HOME/Workspace/lib/yapf
+  au FileType python nnoremap <leader>y :0,$!python $HOME/Workspace/lib/yapf<Cr>
+augroup END
+
+augroup NasmFile
+  au!
+  " Automatically set file type to nasm if file extension is '.nasm'.
+  " Syntastics checker also relies on this to enable nasm checker.
+  " au is short for autocmd
+  au BufRead,BufNewFile *.nasm set filetype=nasm
+augroup END
+
+augroup MakeFile
+  au!
+  " in Makefile, don't expand tabs to spaces, we need REAL tabs.
+  au FileType make set noexpandtab
+augroup END

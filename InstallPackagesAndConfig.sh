@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd $HOME
+SCRIPT_DIR = "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo "Script directory: '$SCRIPT_DIR'"
 
 sudo apt-get update
 sudo apt-get install build-essential
@@ -71,4 +72,19 @@ ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
 
+# Install pip if pip command is not there.
+if hash pip 2>/dev/null; then
+  sudo apt-get install python-pip
+fi
+# Should set the package installing path of pip to user directory,
+# Add lines like following to $HOME/.pip/pip.conf
+# [global]
+# target=$HOME/Workspace/lib
+# This is done by copying the pip.conf to $HOME/.pip/pip.conf
+cp $SCRIPT_DIR/pip.conf $HOME/.pip/pip.conf
 
+# Install python test: nose
+pip install nose
+
+# Install python formater: yapf
+pip install yapf
