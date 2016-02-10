@@ -113,9 +113,9 @@ map <leader> <plug>(easymotion-prefix)
 " turn on smart case for vim-easymotion
 " just like set ignorecase and set smartcase
 let g:EasyMotion_smartcase=1
-" set f to bi-directional and over-windows search
+" set s to bi-directional and over-windows search
 " need 2 char to trigger, i.e. <leader>s{char}{char}{label}
-nmap f <plug>(easymotion-overwin-f2)
+nmap s <plug>(easymotion-overwin-f2)
 " jk motions, use when in easymotion mode
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
