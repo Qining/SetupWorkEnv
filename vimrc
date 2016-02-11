@@ -29,8 +29,6 @@ Plugin 'sheerun/vim-polyglot'
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
   " lighter search tool alternative to easymotion
-  " <s> to search next, <S> to search previous
-" Plugin 'justinmk/vim-sneak'
   " fuzzy file search
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -136,6 +134,11 @@ nmap s <plug>(easymotion-overwin-f2)
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
 
+" use easymotion for incremental search
+map / <Plug>(easymotion-sn)
+" should be used together with the map above, but not sure what it is.
+" omap / <Plug>(easymotion-tn)
+
 """" python-mode settings
 " turn off rope script
 let g:pymode_rope=0
@@ -158,9 +161,13 @@ let g:vim_markdown_folding_disabled=1
 " Turn on default mapping of vim-rtags, through it should by default turned on.
 let g:rtagsUseDefaultMappings=1
 
-""" tagbar settings
+"""" tagbar settings
 " use <F8> to toggle tag bar
 nnoremap <F8> :TagbarToggle<CR>
+
+"""" ctrlp settings
+" Use <leader>f to trigger fuzzy buffer search of CtrlP
+nnoremap F :CtrlPLine<CR>
 
 """" generic settings
 
