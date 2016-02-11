@@ -15,6 +15,11 @@ sudo apt-get install meld
 sudo apt-get install clang-format-3.6
 sudo apt-get install libnotify
 
+# Install python code checkers, vim uses them through syntastic
+#sudo apt-get install pylint
+sudo apt-get install python-flake8
+sudo apt-get install pep8
+
 # Install asciidoctor so that you can render .asciidoc file
 sudo apt-get install asciidoctor
 # also install python-pygments, otherwise asciidoctor complains missing

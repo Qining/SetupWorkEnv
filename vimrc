@@ -55,6 +55,10 @@ Plugin 'lyuts/vim-rtags'
   " <leader>cc : set to comment
   " <leader>cu : cancel comment
 Plugin 'scrooloose/nerdcommenter'
+  " Simplify Doxygen documentation in C, C++, Python.
+  " Use :Dox command with cursor on the function declaration would generate
+  " doxygen style comments.
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 
 " language support
 Plugin 'klen/python-mode'
@@ -98,8 +102,18 @@ let g:ycm_collect_identifiers_from_tags_files=1
 " compile command json file, then set 'compilation_data_base_folder' to the
 " directory of the generated json file.
 
-"""" syntastics settings
+"""" syntastic settings
 let g:syntastic_always_populate_loc_list=1
+
+" set python linter
+let g:syntastic_python_checkers=["flake8", "pep8"]
+" I need to set ignore rules for each checker.
+" E501: panic when line length >= 80
+" C0111: (propably only valid for pylint), panic when no doc string found for a
+" class.
+let g:syntastic_python_flake8_args='--ignore=E501,C0111'
+let g:syntastic_python_pep8_args='--ignore=E501,C0111'
+
 
 """" vim-indent-guide options
 let g:indent_guides_start_level=2
@@ -123,14 +137,16 @@ map <leader>k <plug>(easymotion-k)
 """" python-mode settings
 " turn off rope script
 let g:pymode_rope=0
-" select default lint checker
-let g:pymode_lint_checkers=['pyflakes', 'pep8', 'plint']
-" please don't panic if I don't add doc string to functions and classes
-let g:pymode_lint_ignore='C0111,'
 " show document
 let g:pymode_doc=1
 " bind 'K' to show doc
 let g:pymode_doc_bind='K'
+" don't need python linter support, I prefer syntastics now.
+let g:pymode_lint=0
+" " select default lint checker
+" let g:pymode_lint_checkers=['pyflakes', 'pep8', 'pylint']
+" " please don't panic if I don't add doc string to functions and classes
+" let g:pymode_lint_ignore="C0111,E501"
 
 """ vim-markdown options
 " disable folding
@@ -240,7 +256,7 @@ set viminfo-='20,<1000,s1000
 augroup CSourceFile
   au!
   " Set to cindent for c family language.
-  au FileType c, cpp set cindent
+  au FileType c,cpp set cindent
 augroup END
 
 augroup PythonFile
