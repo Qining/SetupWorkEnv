@@ -7,6 +7,8 @@ sudo apt-get update
 sudo apt-get install build-essential
 sudo apt-get install cmake
 sudo apt-get install vim
+# To use tagbar plugin for vim, we need this.
+sudo apt-get install exuberant-ctags
 sudo apt-get install tmux
 sudo apt-get install python-dev
 sudo apt-get install ipython

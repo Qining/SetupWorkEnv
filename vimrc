@@ -24,6 +24,7 @@ Plugin 'VundleVim/Vundle.vim'
 " theme, colorscheme
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'sheerun/vim-polyglot'
 
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
@@ -32,7 +33,6 @@ Plugin 'easymotion/vim-easymotion'
 " Plugin 'justinmk/vim-sneak'
   " fuzzy file search
 Plugin 'ctrlpvim/ctrlp.vim'
-
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -44,6 +44,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
   " <leader>rf : find references
   " <leader>rj : go to definiation
   " <leader>rw : rename symbol under cursor (not tested)
+  " Note, only work in C family language.
 Plugin 'lyuts/vim-rtags'
   " It seems 'google' package already contains 'clang linter'.
   " And adding it again will cause some conflit, check the existence before
@@ -68,6 +69,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 " Personal plugins end
@@ -151,6 +153,14 @@ let g:pymode_lint=0
 """ vim-markdown options
 " disable folding
 let g:vim_markdown_folding_disabled=1
+
+"""" vim-rtags settings
+" Turn on default mapping of vim-rtags, through it should by default turned on.
+let g:rtagsUseDefaultMappings=1
+
+""" tagbar settings
+" use <F8> to toggle tag bar
+nnoremap <F8> :TagbarToggle<CR>
 
 """" generic settings
 
