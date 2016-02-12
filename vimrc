@@ -37,6 +37,8 @@ Plugin 'ntpeters/vim-better-whitespace'
 
 " programming
 Plugin 'Valloric/YouCompleteMe'
+  " by default use <leader>ig to toggle vim indent guides plugin.
+  " or just use :IndentGuidesToggle
 Plugin 'nathanaelkane/vim-indent-guides'
   " vim rtags binding
   " common usage:
@@ -115,10 +117,15 @@ let g:syntastic_python_checkers=["flake8", "pep8"]
 let g:syntastic_python_flake8_args='--ignore=E501,C0111'
 let g:syntastic_python_pep8_args='--ignore=E501,C0111'
 
-
 """" vim-indent-guide options
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+
+" Set color for the indent strips.
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=red ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=darkgrey
+"let indent_guides_color_change_percent=10
 
 """" vim-easymotion settings
 " disable default mapping first
@@ -198,6 +205,9 @@ set smartindent
 
 " show line number
 set nu
+
+" show me a bar at col 80
+set colorcolumn=80
 
 " the kind of folding used for the current window
 set foldmethod=syntax
