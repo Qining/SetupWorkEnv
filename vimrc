@@ -137,7 +137,10 @@ map <leader> <plug>(easymotion-prefix)
 let g:EasyMotion_smartcase=1
 " set s to bi-directional and over-windows search
 " need 2 char to trigger, i.e. <leader>s{char}{char}{label}
-"nmap s <plug>(easymotion-overwin-f2)
+" nmap s <plug>(easymotion-overwin-f2)
+" This is exactly what I want!
+" Give me a tag for every WORD, it is like vimium in Chrome now.
+nmap f <plug>(easymotion-bd-W)
 " jk motions, use when in easymotion mode
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
@@ -178,6 +181,9 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap F :CtrlPLine<CR>
 
 """" generic settings
+
+" Use * in visual mode to search selected word
+vnoremap * y/<C-R>"<CR>
 
 " Enable file type based indent configuration and syntax highlighting.
 filetype plugin indent on
