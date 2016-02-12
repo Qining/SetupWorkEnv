@@ -29,6 +29,7 @@ Plugin 'sheerun/vim-polyglot'
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
   " lighter search tool alternative to easymotion
+Plugin 'justinmk/vim-sneak'
   " fuzzy file search
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -129,7 +130,7 @@ map <leader> <plug>(easymotion-prefix)
 let g:EasyMotion_smartcase=1
 " set s to bi-directional and over-windows search
 " need 2 char to trigger, i.e. <leader>s{char}{char}{label}
-nmap s <plug>(easymotion-overwin-f2)
+"nmap s <plug>(easymotion-overwin-f2)
 " jk motions, use when in easymotion mode
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
@@ -239,7 +240,7 @@ colorscheme desertEx
 " terminal.
 set t_Co=256
 
-" Move vertically by visual line
+" Move vertically by visual line, only in normal mode
 nnoremap j gj
 nnoremap k gk
 
