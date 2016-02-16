@@ -107,6 +107,8 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 """" syntastic settings
 let g:syntastic_always_populate_loc_list=1
+" " turn on syntax checking for c/cpp headers.
+" let g:syntastic_cpp_check_header=0
 
 " set python linter
 let g:syntastic_python_checkers=["flake8", "pep8"]
@@ -149,6 +151,11 @@ map <leader>k <plug>(easymotion-k)
 map / <Plug>(easymotion-sn)
 " should be used together with the map above, but not sure what it is.
 " omap / <Plug>(easymotion-tn)
+
+
+"""" vim-sneak settings
+" follow generic settings for the case-sensitivity
+let g:sneak#use_ic_scs=1
 
 """" python-mode settings
 " turn off rope script
@@ -255,6 +262,9 @@ colorscheme desertEx
 " to make vim color works correctly, have to tell vim we have a 256 color
 " terminal.
 set t_Co=256
+
+" set highlight on current line
+set cursorline
 
 " Move vertically by visual line, only in normal mode
 nnoremap j gj

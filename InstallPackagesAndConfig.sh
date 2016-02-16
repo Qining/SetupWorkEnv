@@ -37,7 +37,8 @@ sudo apt-get install python-pygments
 # mine usually is $HOME/Workspace/bin/
 
 # For clipboard tunneling to/from tmux
-sudo apt-get install xclip
+# sudo apt-get install xclip
+sudo apt-get install xsel
 
 # To use rtags and vim-rtags (the installation of vim-rtags is handled in
 # vimrc), we have to install clang library.
