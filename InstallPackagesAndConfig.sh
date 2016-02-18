@@ -5,9 +5,12 @@ trap 'echo Ctrl-c, Setup interrupted; exit' INT
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
-#############################
-## Install system packages ##
-#############################
+echo -e \
+  "
+  #############################
+  ## Install system packages ##
+  #############################
+  "
 
 sudo apt-get update
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
@@ -55,9 +58,12 @@ sudo apt-get -y install xsel
 # vimrc), we have to install clang library and llvm (dev version).
 sudo apt-get -y install libclang-dev llvm-dev
 
-##########################
-## System-wide settings ##
-##########################
+echo -e \
+  "
+  ##########################
+  ## System-wide settings ##
+  ##########################
+  "
 
 # Set the key repeat rate to the max (or key repeat interval to the least).
 sudo kbdrate -r 30
@@ -68,9 +74,12 @@ sudo kbdrate -r 30
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat true
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat-interval 1
 
-###############################
-## Setup Workspace directory ##
-###############################
+echo -e \
+  "
+  ###############################
+  ## Setup Workspace directory ##
+  ###############################
+  "
 
 mkdir -p $HOME/Workspace/bin
 mkdir -p $HOME/Workspace/lib
@@ -124,9 +133,12 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
 
 fi
 
-##########################
-## User Python packages ##
-##########################
+echo -e \
+  "
+  ##########################
+  ## User Python packages ##
+  ##########################
+  "
 
 # Install python formater: yapf
 pip install yapf
@@ -134,9 +146,12 @@ pip install yapf
 # Install matplotlib
 pip install matplotlib
 
-################
-## Vim config ##
-################
+echo -e \
+  "
+  ################
+  ## Vim config ##
+  ################
+  "
 
 # Use Vundle to manage vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -150,9 +165,12 @@ python ./install.py --clang-completer
 # flush vundle again.
 vim +PluginInstall +qall
 
-##############
-## Finalize ##
-##############
+echo -e \
+  "
+  ##############
+  ## Finalize ##
+  ##############
+  "
 
 source $HOME/.bashrc
 
