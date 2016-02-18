@@ -1,8 +1,8 @@
 # Paths
 export PATH=$PATH:$HOME/Workspace/bin
-export PYTHONPATH=$PYTHONPATH:$HOME/Workspace/lib
-export SVDIR=$HOME/Workspace/vokuhila-repo/vokuhila
-export TEMP=$HOME/Workspace/temp
+export PYTHONPATH=$PYTHONPATH:$HOME/Workspace/lib/python/dist-packages
+# export SVDIR=$HOME/Workspace/vokuhila-repo/vokuhila
+export TMP=$HOME/Workspace/tmp
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's

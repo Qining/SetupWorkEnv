@@ -152,7 +152,6 @@ map / <Plug>(easymotion-sn)
 " should be used together with the map above, but not sure what it is.
 " omap / <Plug>(easymotion-tn)
 
-
 """" vim-sneak settings
 " follow generic settings for the case-sensitivity
 let g:sneak#use_ic_scs=1
