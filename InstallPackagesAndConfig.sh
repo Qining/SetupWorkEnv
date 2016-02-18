@@ -6,7 +6,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
 sudo apt-get update
-sudo apt-get -y install build-essential make gcc g++ flex bison patch
+sudo apt-get -y install build-essential make gcc g++ flex bison patch git
 sudo apt-get -y install gedit libzip-dev trash-cli openssh-server p7zip-full
 sudo apt-get -y install cmake
 sudo apt-get -y install vim
@@ -62,15 +62,11 @@ sudo kbdrate -r 30
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat true
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat-interval 1
 
-# Download the ycm default config file: .ycm_extra_conf.py
-wget https://raw.githubusercontent.com/Valloric/ycmd/master/cpp/ycm/.ycm_exra_conf.py \
-  -O $HOME/ycm_default_conf.py
-
 # Make Workspace directory
 mkdir -p $HOME/Workspace/bin
 mkdir -p $HOME/Workspace/lib
   # prefer to use python2.7
-  mkdir -p $HOME/Workspace/lib/python/dist-packages
+  mkdir -p $HOME/Workspace/lib/python2.7/dist-packages
 
 mkdir -p $HOME/Workspace/tools
 mkdir -p $HOME/Workspace/tmp
@@ -90,33 +86,40 @@ ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
 
+# Install pip if pip command is not there.
+if hash pip 2>/dev/null; then
+  sudo apt-get -y install python-pip
+fi
+
 # clone the setup work env repo
 cd $HOME/Workspace/personal
 git clone https://github.com/Qining/SetupWorkEnv.git
 SETUP_WORK_ENV_REPO_DIR=$HOME/Workspace/personal/SetupWorkEnv
 
-# source the bashrc
-echo "source ${SETUP_WORK_ENV_REPO_DIR}/bashrc" >> $HOME/.bashrc
+# Setup config files if not done before.
+if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
 
-# source vimrc
-echo "source ${SETUP_WORK_ENV_REPO_DIR}/vimrc" >> $HOME/.vimrc
+  # source the bashrc
+  echo "source ${SETUP_WORK_ENV_REPO_DIR}/bashrc" >> $HOME/.bashrc
 
-# source the tmux.conf
-echo "source ${SETUP_WORK_ENV_REPO_DIR}/tmux.conf" >> $HOME/.tmux.conf
+  # source vimrc
+  echo "source ${SETUP_WORK_ENV_REPO_DIR}/vimrc" >> $HOME/.vimrc
 
-# copy cgdbrc
-cp $SETUP_WORK_ENV_REPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
+  # source the tmux.conf
+  echo "source ${SETUP_WORK_ENV_REPO_DIR}/tmux.conf" >> $HOME/.tmux.conf
 
-# Install pip if pip command is not there.
-if hash pip 2>/dev/null; then
-  sudo apt-get -y install python-pip
+  # copy cgdbrc
+  mkdir -p $HOME/.cgdb
+  cp $SETUP_WORK_ENV_REPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
+
+  # Should set the package installing path of pip to user directory,
+  # Add lines like following to $HOME/.pip/pip.conf
+  # [global]
+  # target=$HOME/Workspace/lib/python2.7/dist-packages/
+  # This is done by copying the pip.conf to $HOME/.pip/pip.conf
+  cp $SETUP_WORK_ENV_REPO_DIR/pip.conf $HOME/.pip/pip.conf
+
 fi
-# Should set the package installing path of pip to user directory,
-# Add lines like following to $HOME/.pip/pip.conf
-# [global]
-# target=$HOME/Workspace/lib
-# This is done by copying the pip.conf to $HOME/.pip/pip.conf
-cp $SETUP_WORK_ENV_REPO_DIR/pip.conf $HOME/.pip/pip.conf
 
 # Install python test: nose
 pip install nose
@@ -126,3 +129,5 @@ pip install yapf
 
 # Install matplotlib
 # pip install matplotlib
+
+source $HOME/.bashrc

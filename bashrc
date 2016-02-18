@@ -20,3 +20,6 @@ alias irssi='TERM=screen-256color irssi'
 # Use clang instead of gcc
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
+
+# Setup Done Flag
+export SETUP_ENV_DONE=true
