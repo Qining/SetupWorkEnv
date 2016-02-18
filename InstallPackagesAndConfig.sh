@@ -22,7 +22,7 @@ sudo apt-get -y install vim
 # To use tagbar plugin for vim, we need this.
 sudo apt-get -y install exuberant-ctags
 sudo apt-get -y install tmux
-sudo apt-get -y install python-dev python-pip
+sudo apt-get -y install python-dev python-pip python-twisted
 sudo apt-get -y install python-numpy python-scipy python-nose
 sudo apt-get -y install ipython
 sudo apt-get -y install cgdb
@@ -55,8 +55,8 @@ sudo apt-get -y install python-pygments
 sudo apt-get -y install xsel
 
 # To use rtags and vim-rtags (the installation of vim-rtags is handled in
-# vimrc), we have to install clang library and llvm (dev version).
-sudo apt-get -y install libclang-dev llvm-dev
+# vimrc), we have to install clang library, llvm and llvm-dev.
+sudo apt-get -y install llvm libclang-dev llvm-dev
 
 echo -e \
   "
@@ -129,7 +129,8 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
   # target=$HOME/Workspace/lib/python2.7/dist-packages/
   # This is done by copying the pip.conf to $HOME/.pip/pip.conf
   mkdir -p $HOME/.pip
-  cp $SETUP_WORK_ENV_REPO_DIR/pip.conf $HOME/.pip/pip.conf
+  echo -e "[global]\ntarget=${HOME}/Workspace/lib/python2.7/dist-packages" >> \
+    $HOME/.pip/pip.conf
 
 fi
 
@@ -155,7 +156,9 @@ echo -e \
 
 # Use Vundle to manage vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+# use echo to send newline char to any confirmation prompts that might come up.
+# [ref: https://github.com/VundleVim/Vundle.vim/issues/511]
+echo | echo | vim +PluginInstall +qall &>/dev/null
 
 # YouCompleteMe (ycm) needs manual installation
 cd $HOME/.vim/bundle/YouCompleteMe
@@ -163,7 +166,7 @@ cd $HOME/.vim/bundle/YouCompleteMe
 python ./install.py --clang-completer
 
 # flush vundle again.
-vim +PluginInstall +qall
+echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo -e \
   "
@@ -182,4 +185,8 @@ echo -e \
 
   You may want to start \e[1mrdm (rtag server) \e[0mmanually and check wheter
   the config file \e[4m~/.tmux.conf \e[0mhas been sourced to \e[1mtumx
-  \e[0mcorrectly"
+  \e[0mcorrectly.
+
+  To use \e[1mtmux\e[0m, you may also want to disable the keyboard shortcuts of
+  your terminal emulator so that it won't hijack your key bindings.
+  "
