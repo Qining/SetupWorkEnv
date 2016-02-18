@@ -128,14 +128,18 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
   mkdir -p $HOME/.cgdb
   cp $SETUP_WORK_ENV_REPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
 
-  # Should set the package installing path of pip to user directory,
-  # Add lines like following to $HOME/.pip/pip.conf
-  # [global]
-  # target=$HOME/Workspace/lib/python2.7/dist-packages/
-  # This is done by copying the pip.conf to $HOME/.pip/pip.conf
-  mkdir -p $HOME/.pip
-  echo -e "[global]\ntarget=${HOME}/Workspace/lib/python2.7/dist-packages" >> \
-    $HOME/.pip/pip.conf
+  #############################################################################
+  ## pip.conf doesn't work well with virtualenv, it seems to be obsolete now ##
+  ## switch to use 'pip install --user' for user space installation.         ##
+  #############################################################################
+  # # Should set the package installing path of pip to user directory,
+  # # Add lines like following to $HOME/.pip/pip.conf
+  # # [global]
+  # # target=$HOME/Workspace/lib/python2.7/dist-packages/
+  # # This is done by copying the pip.conf to $HOME/.pip/pip.conf
+  # mkdir -p $HOME/.pip
+  # echo -e "[global]\ntarget=${HOME}/Workspace/lib/python2.7/dist-packages" >> \
+    # $HOME/.pip/pip.conf
 
 fi
 
@@ -147,13 +151,13 @@ echo -e \
   "
 
 # Install python formater: yapf
-pip install yapf
+pip install --user yapf
 
 # # Install matplotlib
-# pip install matplotlib
+# pip install --user matplotlib
 
 # Install virtualenv
-pip install virtualenv
+pip install --user virtualenv
 
 echo -e \
   "

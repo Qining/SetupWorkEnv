@@ -306,7 +306,7 @@ augroup PythonFile
   au!
   " Set <leader>y to format current python file.
   " Assume the yapf lib directory is at $HOME/Workspace/lib/yapf
-  au FileType python nnoremap <leader>y :0,$!python $HOME/Workspace/lib/yapf<Cr>
+  au FileType python nnoremap <leader>y :0,$!yapf<Cr>
 augroup END
 
 augroup NasmFile

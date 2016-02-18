@@ -1,6 +1,6 @@
 # Paths
 export PATH=$PATH:$HOME/Workspace/bin
-export PYTHONPATH=$PYTHONPATH:$HOME/Workspace/lib/python2.7/dist-packages
+export PATH=$PATH:$HOME/.local/bin
 export TMP=$HOME/Workspace/tmp
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
