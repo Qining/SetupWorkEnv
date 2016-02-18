@@ -48,8 +48,8 @@ sudo apt-get -y install python-pygments
 sudo apt-get -y install xsel
 
 # To use rtags and vim-rtags (the installation of vim-rtags is handled in
-# vimrc), we have to install clang library and llvm.
-sudo apt-get -y install libclang-dev llvm
+# vimrc), we have to install clang library and llvm (dev version).
+sudo apt-get -y install libclang-dev llvm-dev
 
 # Use Vundle to manage vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
