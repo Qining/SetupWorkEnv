@@ -87,9 +87,7 @@ mkdir -p $HOME/Workspace/personal
 git clone --recursive https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 cd $HOME/Workspace/tools/rtags
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-make
-cd $HOME/Workspace/bin
-ln -s $HOME/Workspace/tools/rtags/bin/* ./
+make -j4
 cd $HOME/Workspace/bin
 ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
@@ -121,6 +119,7 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
   # [global]
   # target=$HOME/Workspace/lib/python2.7/dist-packages/
   # This is done by copying the pip.conf to $HOME/.pip/pip.conf
+  mkdir -p $HOME/.pip
   cp $SETUP_WORK_ENV_REPO_DIR/pip.conf $HOME/.pip/pip.conf
 
 fi
