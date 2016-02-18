@@ -8,6 +8,7 @@ echo "Script directory: '$SCRIPT_DIR'"
 sudo apt-get update
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
 sudo apt-get -y install gedit libzip-dev trash-cli openssh-server p7zip-full
+sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake
 sudo apt-get -y install vim
 
@@ -47,8 +48,8 @@ sudo apt-get -y install python-pygments
 sudo apt-get -y install xsel
 
 # To use rtags and vim-rtags (the installation of vim-rtags is handled in
-# vimrc), we have to install clang library.
-sudo apt-get -y install libclang-dev
+# vimrc), we have to install clang library and llvm.
+sudo apt-get -y install libclang-dev llvm
 
 # Use Vundle to manage vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
