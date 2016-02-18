@@ -155,3 +155,13 @@ vim +PluginInstall +qall
 ##############
 
 source $HOME/.bashrc
+
+echo -e \
+  "
+  ###########################
+  ## Setup script finished ##
+  ###########################
+
+  You may want to start \e[1mrdm (rtag server) \e[0mmanually and check wheter
+  the config file \e[4m~/.tmux.conf \e[0mhas been sourced to \e[1mtumx
+  \e[0mcorrectly"
