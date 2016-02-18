@@ -1,6 +1,8 @@
 #!/bin/bash
 
-SCRIPT_DIR = "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+trap 'echo Ctrl-c, Setup interrupted; exit' INT
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
 sudo apt-get update
@@ -91,16 +93,19 @@ ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # clone the setup work env repo
 cd $HOME/Workspace/personal
 git clone https://github.com/Qining/SetupWorkEnv.git
-SETUPREPO_DIR = $HOME/Workspace/personal/SetupWorkEnv
+SETUP_WORK_ENV_REPO_DIR=$HOME/Workspace/personal/SetupWorkEnv
 
 # source the bashrc
-echo "source ${SETUPREPO_DIR}/bashrc" >> $HOME/.bashrc
+echo "source ${SETUP_WORK_ENV_REPO_DIR}/bashrc" >> $HOME/.bashrc
+
+# source vimrc
+echo "source ${SETUP_WORK_ENV_REPO_DIR}/vimrc" >> $HOME/.vimrc
 
 # source the tmux.conf
-echo "source ${SETUPREPO_DIR}/tmux.conf" >> $HOME/.tmux.conf
+echo "source ${SETUP_WORK_ENV_REPO_DIR}/tmux.conf" >> $HOME/.tmux.conf
 
 # copy cgdbrc
-cp $SETUPREPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
+cp $SETUP_WORK_ENV_REPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
 
 # Install pip if pip command is not there.
 if hash pip 2>/dev/null; then
@@ -111,7 +116,7 @@ fi
 # [global]
 # target=$HOME/Workspace/lib
 # This is done by copying the pip.conf to $HOME/.pip/pip.conf
-cp $SETUPREPO_DIR/pip.conf $HOME/.pip/pip.conf
+cp $SETUP_WORK_ENV_REPO_DIR/pip.conf $HOME/.pip/pip.conf
 
 # Install python test: nose
 pip install nose
