@@ -5,6 +5,10 @@ trap 'echo Ctrl-c, Setup interrupted; exit' INT
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
+#############################
+## Install system packages ##
+#############################
+
 sudo apt-get update
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
 sudo apt-get -y install gedit libzip-dev trash-cli openssh-server p7zip-full
@@ -15,8 +19,8 @@ sudo apt-get -y install vim
 # To use tagbar plugin for vim, we need this.
 sudo apt-get -y install exuberant-ctags
 sudo apt-get -y install tmux
-sudo apt-get -y install python-dev
-sudo apt-get -y install python-numpy python-scipy
+sudo apt-get -y install python-dev python-pip
+sudo apt-get -y install python-numpy python-scipy python-nose
 sudo apt-get -y install ipython
 sudo apt-get -y install cgdb
 sudo apt-get -y install meld
@@ -51,8 +55,9 @@ sudo apt-get -y install xsel
 # vimrc), we have to install clang library and llvm (dev version).
 sudo apt-get -y install libclang-dev llvm-dev
 
-# Use Vundle to manage vim plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+##########################
+## System-wide settings ##
+##########################
 
 # Set the key repeat rate to the max (or key repeat interval to the least).
 sudo kbdrate -r 30
@@ -63,7 +68,10 @@ sudo kbdrate -r 30
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat true
 # gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat-interval 1
 
-# Make Workspace directory
+###############################
+## Setup Workspace directory ##
+###############################
+
 mkdir -p $HOME/Workspace/bin
 mkdir -p $HOME/Workspace/lib
   # prefer to use python2.7
@@ -86,11 +94,6 @@ cd $HOME/Workspace/bin
 ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
-
-# Install pip if pip command is not there.
-if hash pip 2>/dev/null; then
-  sudo apt-get -y install python-pip
-fi
 
 # clone the setup work env repo
 cd $HOME/Workspace/personal
@@ -122,13 +125,34 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
 
 fi
 
-# Install python test: nose
-pip install nose
+##########################
+## User Python packages ##
+##########################
 
 # Install python formater: yapf
 pip install yapf
 
 # Install matplotlib
-# pip install matplotlib
+pip install matplotlib
+
+################
+## Vim config ##
+################
+
+# Use Vundle to manage vim plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
+# YouCompleteMe (ycm) needs manual installation
+cd $HOME/.vim/bundle/YouCompleteMe
+# so far, only need C/C++ support
+python ./install.py --clang-completer
+
+# flush vundle again.
+vim +PluginInstall +qall
+
+##############
+## Finalize ##
+##############
 
 source $HOME/.bashrc
