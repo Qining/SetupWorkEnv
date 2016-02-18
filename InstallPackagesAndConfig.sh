@@ -5,6 +5,10 @@ trap 'echo Ctrl-c, Setup interrupted; exit' INT
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
+echo -e "## Advice: ##
+  You may want to install tmux and openssh-server manually first, so that you
+  can monitor the process of this script.\n"
+
 echo -e \
   "
   #############################
@@ -13,15 +17,16 @@ echo -e \
   "
 
 sudo apt-get update
+sudo apt-get -y install openssh-server
+sudo apt-get -y install tmux
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
-sudo apt-get -y install gedit libzip-dev trash-cli openssh-server p7zip-full
+sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake
 sudo apt-get -y install vim
 
 # To use tagbar plugin for vim, we need this.
 sudo apt-get -y install exuberant-ctags
-sudo apt-get -y install tmux
 sudo apt-get -y install python-dev python-pip python-twisted
 sudo apt-get -y install python-numpy python-scipy python-nose
 sudo apt-get -y install ipython
@@ -144,8 +149,8 @@ echo -e \
 # Install python formater: yapf
 pip install yapf
 
-# Install matplotlib
-pip install matplotlib
+# # Install matplotlib
+# pip install matplotlib
 
 # Install virtualenv
 pip install virtualenv
@@ -161,6 +166,8 @@ echo -e \
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # use echo to send newline char to any confirmation prompts that might come up.
 # [ref: https://github.com/VundleVim/Vundle.vim/issues/511]
+echo -e \
+  "\nInstalling vim plugins, this may take a while (due to YouCompleteMe).\n"
 echo | echo | vim +PluginInstall +qall &>/dev/null
 
 # YouCompleteMe (ycm) needs manual installation
