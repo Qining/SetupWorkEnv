@@ -147,6 +147,9 @@ pip install yapf
 # Install matplotlib
 pip install matplotlib
 
+# Install virtualenv
+pip install virtualenv
+
 echo -e \
   "
   ################
