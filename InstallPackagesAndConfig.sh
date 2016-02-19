@@ -22,7 +22,7 @@ sudo apt-get -y install tmux
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
-sudo apt-get -y install cmake
+sudo apt-get -y install cmake flex texinfo libtool
 sudo apt-get -y install vim
 
 # To use tagbar plugin for vim, we need this.
