@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+exe() { echo "\$ $@"; "$@"; }
+
 trap 'echo Ctrl-c, Test interrupted; exit' INT
 
 source ~/.bashrc
@@ -11,26 +13,26 @@ echo -e \
   ###########################
   "
 
-ssh -V && \
-make -v && \
-vim --version && \
-gcc --version && \
-g++ --version && \
-clang --version && \
-clang++ --version && \
-python --version && \
-ipython --version && \
-git --version && \
-tmux -V && \
-cmake --version && \
-xsel --version && \
-curl --version && \
+exe ssh -V && \
+exe make -v && \
+exe vim --version && \
+exe gcc --version && \
+exe g++ --version && \
+exe clang --version && \
+exe clang++ --version && \
+exe python --version && \
+exe ipython --version && \
+exe git --version && \
+exe tmux -V && \
+exe cmake --version && \
+exe xsel --version && \
+exe curl --version && \
 # On company machine, I have llvm-config-3.4 but not llvm-config in my PATH
-# llvm-config --version && \
+# exe llvm-config --version && \
 # Checking meld cause error in Travis CI
-# meld --help > /dev/null && \
-pip --version && \
-cgdb --version
+# exe meld --help > /dev/null && \
+exe pip --version && \
+exe cgdb --version
 
 if [ $? -ne 0 ]; then
   echo "Check System Packages failed"
@@ -44,7 +46,7 @@ echo -e \
   #########################
   "
 
-$HOME/Workspace/bin/rdm --version && \
+exe $HOME/Workspace/bin/rdm --version
 
 
 if [ $? -ne 0 ]; then
@@ -59,8 +61,8 @@ echo -e \
   ################################
   "
 
-yapf --version && \
-virtualenv --version && \
+exe yapf --version && \
+exe virtualenv --version && \
 
 
 if [ $? -ne 0 ]; then

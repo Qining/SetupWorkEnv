@@ -5,6 +5,20 @@ sudo: required
 os:
   - linux
 
+# Travis CI is powered with Ubuntu 12.04, whose toolchain is outdated.
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - kubuntu-backports
+      - llvm-toolchain-precise-3.6
+    packages:
+      - cmake
+      - g++-4.9
+      - clang-3.6
+      - ninja-build
+      - lcov
+
 before_install:
   - ./InstallPackagesAndConfig.sh
 
