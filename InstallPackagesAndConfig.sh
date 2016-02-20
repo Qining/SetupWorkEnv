@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 trap 'echo Ctrl-c, Setup interrupted; exit' INT
 
