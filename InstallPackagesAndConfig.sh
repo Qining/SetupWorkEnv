@@ -101,7 +101,7 @@ mkdir -p $HOME/Workspace/personal
 git clone --recursive https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 cd $HOME/Workspace/tools/rtags
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-make -j4
+make -j`nproc`
 cd $HOME/Workspace/bin
 ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same

@@ -1,0 +1,10 @@
+# Linux build configuration for Travis CI
+
+sudo: required
+
+os:
+  - linux
+
+script:
+  - ./InstallPackagesAndConfig.sh
+  - ./test.sh
