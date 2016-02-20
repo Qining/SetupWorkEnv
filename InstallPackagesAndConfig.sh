@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+exe() { echo "\$ $@"; "$@"; }
+
 trap 'echo Ctrl-c, Setup interrupted; exit' INT
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -19,7 +21,8 @@ echo -e \
 sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get -y install tmux htop git
-sudo apt-get -y install build-essential make gcc-4.9 g++-4.9 flex bison patch
+sudo apt-get -y install build-essential make flex bison patch
+sudo apt-get -y install gcc-4.9 g++-4.9
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake flex texinfo libtool mingw-w64 pbzip2
@@ -32,7 +35,8 @@ sudo apt-get -y install python-numpy python-scipy python-nose
 sudo apt-get -y install ipython
 sudo apt-get -y install cgdb
 sudo apt-get -y install meld
-sudo apt-get -y install clang
+# sudo apt-get -y install clang
+sudo apt-get -y install clang-3.6
 sudo apt-get -y install clang-format-3.6
 sudo apt-get -y install libnotify
 
@@ -98,12 +102,13 @@ mkdir -p $HOME/Workspace/personal
 
 # Download and install rtags
 # More info and setup for project: https://github.com/Andersbakken/rtags
-git clone --recursive https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
-cd $HOME/Workspace/tools/rtags
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-make -j`nproc`
-cd $HOME/Workspace/bin
-ln -s $HOME/Workspace/tools/rtags/bin/* ./
+exe git clone --recursive \
+  https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
+exe cd $HOME/Workspace/tools/rtags
+exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+exe make -j`nproc`
+exe cd $HOME/Workspace/bin
+exe ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
 
