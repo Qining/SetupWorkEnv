@@ -11,25 +11,29 @@ echo -e \
   ###########################
   "
 
-ssh -V &&
-make -v &&
-vim --version &&
-gcc --version &&
-g++ --version &&
-clang --version &&
-clang++ --version &&
-python --version &&
-ipython --version &&
-git --version &&
-tmux -V &&
-cmake --version &&
-xsel --version &&
-curl --version &&
-llvm-config --version &&
-meld --version &&
-pip --version &&
-cgdb --version &&
+ssh -V && \
+make -v && \
+vim --version && \
+gcc --version && \
+g++ --version && \
+clang --version && \
+clang++ --version && \
+python --version && \
+ipython --version && \
+git --version && \
+tmux -V && \
+cmake --version && \
+xsel --version && \
+curl --version && \
+# llvm-config --version && \
+meld --help > /dev/null && \
+pip --version && \
+cgdb --version
 
+if [ $? -ne 0 ]; then
+  echo "Check System Packages failed"
+  exit 1
+fi
 
 echo -e \
   "
@@ -38,7 +42,13 @@ echo -e \
   #########################
   "
 
-rdm --version &&
+$HOME/Workspace/bin/rdm --version && \
+
+
+if [ $? -ne 0 ]; then
+  echo "Check User Packages failed"
+  exit 1
+fi
 
 echo -e \
   "
@@ -47,8 +57,14 @@ echo -e \
   ################################
   "
 
-yapf --version &&
-virtualenv --version &&
+yapf --version && \
+virtualenv --version && \
+
+
+if [ $? -ne 0 ]; then
+  echo "Check User Python Packages failed"
+  exit 1
+fi
 
 echo -e \
   "
@@ -72,8 +88,9 @@ VIM_PLUGINS="
   "
 
 for PLUGIN in $VIM_PLUGINS; do
+  echo "Checking: $PLUGIN"
   if [ ! -d "$HOME/.vim/bundle/$PLUGIN" ]; then
-    echo "ERROR: "$HOME/.vim/bundle/$PLUGIN" not found."
+    echo "ERROR: "$HOME/.vim/bundle/$PLUGIN" not found." && \
     exit 1
   fi
 done
