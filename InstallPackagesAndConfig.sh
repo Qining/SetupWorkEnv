@@ -26,8 +26,8 @@ sudo apt-get -y install gcc-4.9 g++-4.9
 
 # We have to export again here, I don't know why previous export is not
 # respected.
-exe export CC=/usr/bin/gcc-4.9
-exe export CXX=/usr/bin/g++-4.9
+if [ -f /usr/bin/gcc-4.9 ]; then export CC=/usr/bin/gcc-4.9; fi
+if [ -f /usr/bin/g++-4.9 ]; then export CXX=/usr/bin/g++-4.9; fi
 
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
