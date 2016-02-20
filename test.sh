@@ -57,6 +57,7 @@ echo -e \
   ######################
   "
 
+# Don't have vim-clang-format install on company machine, so do not check it.
 VIM_PLUGINS="
   Vundle.vim
   YouCompleteMe

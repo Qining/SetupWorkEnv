@@ -172,12 +172,11 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # [ref: https://github.com/VundleVim/Vundle.vim/issues/511]
 echo -e \
   "\nInstalling vim plugins, this may take a while (due to YouCompleteMe).\n"
-echo | echo | vim +PluginInstall +qall &>/dev/null
+# echo | echo | vim +PluginInstall +qall &>/dev/null
+echo | echo | vim +PluginInstall +qall
 
 # YouCompleteMe (ycm) needs manual installation
-cd $HOME/.vim/bundle/YouCompleteMe
-# so far, only need C/C++ support
-python ./install.py --clang-completer
+cd $HOME/.vim/bundle/YouCompleteMe && python ./install.py --clang-completer
 
 # flush vundle again.
 echo | echo | vim +PluginInstall +qall &>/dev/null
