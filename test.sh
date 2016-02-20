@@ -67,7 +67,6 @@ VIM_PLUGINS="
   vim-rtags
   vim-multiple-cursors
   vim-sneak
-  vim-clang-format
   vim-better-whitespace
   "
 
