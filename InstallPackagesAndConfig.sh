@@ -18,7 +18,7 @@ echo -e \
 
 sudo apt-get update
 sudo apt-get -y install openssh-server
-sudo apt-get -y install tmux
+sudo apt-get -y install tmux htop
 sudo apt-get -y install build-essential make gcc g++ flex bison patch git
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
