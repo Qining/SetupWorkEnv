@@ -102,6 +102,7 @@ mkdir -p $HOME/Workspace/personal
 
 # Download and install rtags
 # More info and setup for project: https://github.com/Andersbakken/rtags
+exe export CC=/usr/bin/gcc-4.9
 exe git clone --recursive \
   https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 exe cd $HOME/Workspace/tools/rtags
