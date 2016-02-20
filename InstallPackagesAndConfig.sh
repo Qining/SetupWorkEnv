@@ -23,6 +23,12 @@ sudo apt-get -y install openssh-server
 sudo apt-get -y install tmux htop git
 sudo apt-get -y install build-essential make flex bison patch
 sudo apt-get -y install gcc-4.9 g++-4.9
+
+# We have to export again here, I don't know why previous export is not
+# respected.
+exe export CC=/usr/bin/gcc-4.9
+exe export CXX=/usr/bin/g++-4.9
+
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake flex texinfo libtool mingw-w64 pbzip2
@@ -102,8 +108,6 @@ mkdir -p $HOME/Workspace/personal
 
 # Download and install rtags
 # More info and setup for project: https://github.com/Andersbakken/rtags
-# exe export CC=/usr/bin/gcc-4.9
-# exe export CXX=/usr/bin/g++-4.9
 exe git clone --recursive \
   https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 exe cd $HOME/Workspace/tools/rtags
