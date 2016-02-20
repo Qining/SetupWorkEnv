@@ -25,8 +25,10 @@ tmux -V && \
 cmake --version && \
 xsel --version && \
 curl --version && \
+# On company machine, I have llvm-config-3.4 but not llvm-config in my PATH
 # llvm-config --version && \
-meld --help > /dev/null && \
+# Checking meld cause error in Travis CI
+# meld --help > /dev/null && \
 pip --version && \
 cgdb --version
 
