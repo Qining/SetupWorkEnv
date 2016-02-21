@@ -189,6 +189,10 @@ nnoremap <F8> :TagbarToggle<CR>
 " Use <leader>f to trigger fuzzy buffer search of CtrlP
 nnoremap F :CtrlPLine<CR>
 
+"""" vim-polyglot
+" enable all highlights for python
+let g:python_highlight_all=1
+
 """" generic settings
 
 " Use * in visual mode to search selected word
