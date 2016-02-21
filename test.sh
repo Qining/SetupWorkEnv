@@ -98,3 +98,13 @@ for PLUGIN in $VIM_PLUGINS; do
     exit 1
   fi
 done
+
+if [ $? -eq 0 ]; then
+  echo -e \
+  "
+  #####################
+  ## All Checks Done ##
+  #####################
+  "
+  exit 0
+fi
