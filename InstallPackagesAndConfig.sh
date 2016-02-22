@@ -170,6 +170,10 @@ pip install --user yapf
 # Install virtualenv
 pip install --user virtualenv
 
+# Install service_identity
+# TODO: for newer dist, we can use apt-get install python-service-identity
+pip install --user service_identity
+
 echo -e \
   "
   ################

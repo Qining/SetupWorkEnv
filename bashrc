@@ -1,7 +1,7 @@
 # Paths
 export PATH=$PATH:$HOME/Workspace/bin
 export PATH=$PATH:$HOME/.local/bin
-export TMP=$HOME/Workspace/tmp
+export MYTMP=$HOME/Workspace/tmp
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's
