@@ -211,10 +211,16 @@ echo -e \
   ## Setup script finished ##
   ###########################
 
-  You may want to start \e[1mrdm (rtag server) \e[0mmanually and check wheter
-  the config file \e[4m~/.tmux.conf \e[0mhas been sourced to \e[1mtumx
+  1) You may want to start \e[1mrdm (rtag server) \e[0mmanually and check
+  whether the config file \e[4m~/.tmux.conf \e[0mhas been sourced to \e[1mtumx
   \e[0mcorrectly.
 
-  To use \e[1mtmux\e[0m, you may also want to disable the keyboard shortcuts of
-  your terminal emulator so that it won't hijack your key bindings.
+  2) To use \e[1mtmux\e[0m, you may also want to disable the keyboard shortcuts
+  of your terminal emulator so that it won't hijack your key bindings.
+
+  3) To make sure \e[1mvim\e[0m \e[4mcolorscheme\e[0m works correctly, you may
+  want to set your terminal preference -> colors to \"white on black\", then
+  open new temrinal to see the colorscheme works correctly. (You may set the
+  terminal preference back to \"system theme\", this won't affect the vim
+  colorscheme, yes, it is weird.)
   "
