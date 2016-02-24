@@ -301,7 +301,11 @@ inoremap <C-W> <C-G>u<C-W>
 " Sets the copy paste buffer large enough
 set viminfo-='20,<1000,s1000
 
-"""" programming helpers based on file type
+"""" autocommands
+
+au BufReadPost * call clearmatches()
+
+  """" programming helpers based on file type
 
 augroup CSourceFile
   au!
