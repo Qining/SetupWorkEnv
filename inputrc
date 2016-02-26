@@ -1,0 +1,14 @@
+# Create a symlink to this file or use "$include <path/to/this/file>" in your
+# $HOME directory's .inputrc
+# To reload .inputrc without close your terminal emulator, use:
+# bind -f ~/.inputrc
+# or press Ctrl-x then Ctrl-r
+
+# case insensitive tab completion
+set completion-ignore-case on
+
+# show symlinked directories a little bit different
+set mark-symlinked-directories on
+
+# show all candidates directly
+set show-all-if-ambiguous on
