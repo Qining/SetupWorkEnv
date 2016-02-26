@@ -118,9 +118,11 @@ exe ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
 
-# clone the setup work env repo
-cd $HOME/Workspace/personal
-git clone https://github.com/Qining/SetupWorkEnv.git
+# clone the setup work env repo if such a clone has not been done yet.
+if [ ! -d $HOME/Workspace/SetupWorkEnv ]; then
+  cd $HOME/Workspace/personal
+  git clone https://github.com/Qining/SetupWorkEnv.git
+fi
 SETUP_WORK_ENV_REPO_DIR=$HOME/Workspace/personal/SetupWorkEnv
 
 # Setup config files if not done before.
@@ -138,6 +140,13 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
   # copy cgdbrc
   mkdir -p $HOME/.cgdb
   cp $SETUP_WORK_ENV_REPO_DIR/cgdbrc $HOME/.cgdb/cgdbrc
+
+  # .inputrc, append $include if the file exists, otherwise create symlink
+  if [ -f $HOME/.inputrc ]; then
+    echo "$include ${HOME}/Workspace/personal/inputrc" >> $HOME/.inputrc
+  else
+    ln -s $HOME/.inputrc $HOME/Workspace/personal/inputrc
+  fi
 
   #############################################################################
   ## pip.conf doesn't work well with virtualenv, it seems to be obsolete now ##
@@ -173,6 +182,9 @@ pip install --user virtualenv
 # Install service_identity
 # TODO: for newer dist, we can use apt-get install python-service-identity
 pip install --user service_identity
+
+# Coverage package which can be used with nosetests to have coverage info
+pip install --user coverage
 
 echo -e \
   "
