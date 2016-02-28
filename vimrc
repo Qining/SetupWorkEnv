@@ -333,3 +333,13 @@ augroup MakeFile
   " in Makefile, don't expand tabs to spaces, we need REAL tabs.
   au FileType make set noexpandtab
 augroup END
+
+  """" project specific auto commands
+augroup VulkanCTS
+  au!
+  au BufRead, BufNewFile $HOME/Workspace/vkcts/vulkancts/external/vulkancts/* \
+    setlocal ts=4 sw=4 noexpandtab
+
+  au BufRead, BufNewFile $HOME/Workspace/vkcts/vulkancts/external/vulkancts/* \
+    setlocal list listchars=tab:>-
+augroup END
