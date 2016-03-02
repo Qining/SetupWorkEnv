@@ -19,8 +19,6 @@ addons:
       - clang-3.6
       - ninja-build
       - lcov
-      # have to add emacs so that I can install rtags?
-      - emacs
 
 before_install:
     # Make sure that gcc-4.9 is selected.
