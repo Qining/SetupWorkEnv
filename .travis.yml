@@ -20,7 +20,7 @@ addons:
       - ninja-build
       - lcov
       # have to add emacs so that I can install rtags?
-      - emacs24
+      - emacs
 
 before_install:
     # Make sure that gcc-4.9 is selected.
