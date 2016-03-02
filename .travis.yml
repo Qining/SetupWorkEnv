@@ -19,6 +19,9 @@ addons:
       - clang-3.6
       - ninja-build
       - lcov
+      - emacs24
+      - emacs-goodies-el
+      - emacs-mozc
 
 before_install:
     # Make sure that gcc-4.9 is selected.
