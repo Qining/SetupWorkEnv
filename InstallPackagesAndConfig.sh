@@ -32,7 +32,7 @@ if [ -f /usr/bin/g++-4.9 ]; then export CXX=/usr/bin/g++-4.9; fi
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake flex texinfo libtool mingw-w64 pbzip2
-sudo apt-get -y install vim
+sudo apt-get -y install vim emacs
 
 # To use tagbar plugin for vim, we need this.
 sudo apt-get -y install exuberant-ctags

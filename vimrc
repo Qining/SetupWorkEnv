@@ -61,6 +61,8 @@ Plugin 'scrooloose/nerdcommenter'
   " Use :Dox command with cursor on the function declaration would generate
   " doxygen style comments.
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+  " project specific vim settings, this is much better than :set exrc
+Plugin 'thinca/vim-localrc'
 
 " language support
 Plugin 'klen/python-mode'
@@ -332,14 +334,4 @@ augroup MakeFile
   au!
   " in Makefile, don't expand tabs to spaces, we need REAL tabs.
   au FileType make set noexpandtab
-augroup END
-
-  """" project specific auto commands
-augroup VulkanCTS
-  au!
-  au BufRead, BufNewFile $HOME/Workspace/vkcts/vulkancts/external/vulkancts/* \
-    setlocal ts=4 sw=4 noexpandtab
-
-  au BufRead, BufNewFile $HOME/Workspace/vkcts/vulkancts/external/vulkancts/* \
-    setlocal list listchars=tab:>-
 augroup END
