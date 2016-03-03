@@ -186,6 +186,9 @@ pip install --user service_identity
 # Coverage package which can be used with nosetests to have coverage info
 pip install --user coverage
 
+# An easy-to-use python module for schedule task per day/month/...
+pip install --user schedule
+
 echo -e \
   "
   ################
