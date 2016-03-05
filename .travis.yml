@@ -1,7 +1,7 @@
 # Linux build configuration for Travis CI
 
 sudo: required
-
+dist: trusty
 os:
   - linux
 
