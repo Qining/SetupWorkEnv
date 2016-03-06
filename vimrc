@@ -50,8 +50,7 @@ Plugin 'lyuts/vim-rtags'
   " It seems 'google' package already contains 'clang linter'.
   " And adding it again will cause some conflit, check the existence before
   " installing this plugin.
-" Plugin 'rhysd/vim-clang-format'
-" let g:clang_format#code_style = "google"
+Plugin 'rhysd/vim-clang-format'
 
   " Toggle comments faster
   " <leader>cc : set to comment
@@ -102,6 +101,11 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_confirm_extra_conf=0
 " Set to collect tags from tag files (:h 'tags' for more info)
 let g:ycm_collect_identifiers_from_tags_files=1
+
+" turn off YCM
+nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+"turn on YCM
+nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " Don't forget to use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to generate
 " compile command json file, then set 'compilation_data_base_folder' to the
@@ -194,6 +198,10 @@ nnoremap F :CtrlPLine<CR>
 """" vim-polyglot
 " enable all highlights for python
 let g:python_highlight_all=1
+
+"""" vim-clang-format settings
+let g:clang_format#code_style = "google"
+let g:clang_format#command='/usr/bin/clang-format'
 
 """" generic settings
 
