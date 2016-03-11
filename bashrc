@@ -3,6 +3,11 @@ export PATH=$PATH:$HOME/Workspace/bin
 export PATH=$PATH:$HOME/.local/bin
 export MYTMP=$HOME/Workspace/tmp
 
+# add lib to link search path
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Workspace/lib
+# add include dir
+export CPATH=$CPATH:$HOME/Workspace/include
+
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's
 # background color (set with colorscheme): only regions that are covered with
