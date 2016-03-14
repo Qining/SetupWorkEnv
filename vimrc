@@ -201,7 +201,6 @@ let g:python_highlight_all=1
 
 """" vim-clang-format settings
 let g:clang_format#code_style = "google"
-let g:clang_format#command='/usr/bin/clang-format'
 
 """" generic settings
 
@@ -283,8 +282,8 @@ set t_Co=256
 set cursorline
 
 " Move vertically by visual line, only in normal mode
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
 
 " Need at least 15 lines before and after my cursor
 set scrolloff=15

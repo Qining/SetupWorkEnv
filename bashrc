@@ -5,6 +5,7 @@ export MYTMP=$HOME/Workspace/tmp
 
 # add lib to link search path
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Workspace/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/Workspace/lib
 # add include dir
 export CPATH=$CPATH:$HOME/Workspace/include
 
