@@ -238,7 +238,11 @@ set nu
 set colorcolumn=80
 
 " the kind of folding used for the current window
-set foldmethod=syntax
+" usually don't need this, so comment it.
+" Even if you want to turn it on one day, make sure to install plugin:
+" FastFold. Then, even foldmethod=syntax will work very fast.
+" Otherwise, this folding slow down vim pretty much.
+" set foldmethod=indent
 " the higher the foldlevel, the more folded regions are open
 " when set to 0, no fold is open.
 set foldlevel=100
