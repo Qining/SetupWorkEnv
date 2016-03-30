@@ -125,10 +125,10 @@ exe ln -s $HOME/Workspace/tools/rtags/bin/* ./
 
 # Dowload and compile tmux and install to default dir
 exe wget https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz \
-  -O $HOME/Workspace/tools/tmux.tar.gz
+  -O $HOME/Workspace/tools/tmux-2.1.tar.gz
 exe cd $HOME/Workspace/tools
-exe tar -xvf tmux.tar.gz
-exe cd $HOME/Workspace/tools/tmux
+exe tar -xvf tmux-2.1.tar.gz
+exe cd $HOME/Workspace/tools/tmux-2.1
 exe ./configure
 exe make -j4
 exe sudo make install
