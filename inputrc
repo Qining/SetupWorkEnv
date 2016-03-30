@@ -4,6 +4,9 @@
 # bind -f ~/.inputrc
 # or press Ctrl-x then Ctrl-r
 
+# load system wide settings first
+$include /etc/inputrc
+
 # case insensitive tab completion
 set completion-ignore-case on
 
