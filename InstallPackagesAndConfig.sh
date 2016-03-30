@@ -8,8 +8,9 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
 echo -e "## Advice: ##
-  You may want to install tmux and openssh-server manually first, so that you
-  can monitor the process of this script.\n"
+  You may want to install openssh-server and compile tmux-2.1 (needs
+  libevent-dev) manually first, so that you can monitor the process of this
+  script.\n"
 
 echo -e \
   "
@@ -20,9 +21,13 @@ echo -e \
 
 sudo apt-get update
 sudo apt-get -y install openssh-server
-sudo apt-get -y install tmux htop git
+sudo apt-get -y install htop git
 sudo apt-get -y install build-essential make flex bison patch
 sudo apt-get -y install gcc-4.9 g++-4.9
+
+# We install tmux by compiling from source (1.8 has bug with clipboard)
+# Compiling tmux needs libevent-dev
+sudo apt-get -y install libevent-dev
 
 # We have to export again here, I don't know why previous export is not
 # respected.
@@ -117,6 +122,18 @@ exe cd $HOME/Workspace/bin
 exe ln -s $HOME/Workspace/tools/rtags/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
+
+# Dowload and compile tmux and install to default dir
+exe wget https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz \
+  -O $HOME/Workspace/tools/
+exe cd $HOME/Workspace/tools
+exe tar -xvf tmux-2.1.tar.gz
+exe cd $HOME/Workspace/tools/tmux-2.1
+exe ./configure
+exe make -j4
+exe sudo make install
+exe cd $HOME
+
 
 # clone the setup work env repo if such a clone has not been done yet.
 if [ ! -d $HOME/Workspace/SetupWorkEnv ]; then
