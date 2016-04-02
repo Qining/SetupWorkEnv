@@ -188,23 +188,23 @@ echo -e \
   "
 
 # Install python formater: yapf
-pip install --user yapf
+exe pip install --user yapf
 
 # # Install matplotlib
-# pip install --user matplotlib
+# exe pip install --user matplotlib
 
 # Install virtualenv
-pip install --user virtualenv
+exe pip install --user virtualenv
 
 # Install service_identity
 # TODO: for newer dist, we can use apt-get install python-service-identity
-pip install --user service_identity
+exe pip install --user service_identity
 
 # Coverage package which can be used with nosetests to have coverage info
-pip install --user coverage
+exe pip install --user coverage
 
 # An easy-to-use python module for schedule task per day/month/...
-pip install --user schedule
+exe pip install --user schedule
 
 echo -e \
   "
@@ -227,6 +227,15 @@ cd $HOME/.vim/bundle/YouCompleteMe && python ./install.py --clang-completer
 
 # flush vundle again.
 echo | echo | vim +PluginInstall +qall &>/dev/null
+
+echo -e \
+  "
+  ##################################
+  ## Download tmux plugin manager ##
+  ##################################
+  "
+exe git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 echo -e \
   "
@@ -255,4 +264,7 @@ echo -e \
   open new temrinal to see the colorscheme works correctly. (You may set the
   terminal preference back to \"system theme\", this won't affect the vim
   colorscheme, yes, it is weird.)
+
+  4) To use tmux plugins, start a tmux session, then use <prefix>-I to install
+  then use <prefix>-r to reload the ~/.tmux.conf.
   "
