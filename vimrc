@@ -312,7 +312,7 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 
 " Sets the copy paste buffer large enough
-set viminfo-='20,<1000,s1000
+set viminfo-='20,<9000,s9000
 
 """" autocommands
 
