@@ -1,5 +1,5 @@
 # Paths
-export PATH=$PATH:$HOME/Workspace/bin
+export PATH=$HOME/Workspace/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
 export MYTMP=$HOME/Workspace/tmp
 
