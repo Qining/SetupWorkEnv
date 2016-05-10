@@ -284,6 +284,7 @@ set t_Co=256
 
 " set highlight on current line
 set cursorline
+hi CursorLine term=bold cterm=bold gui=bold ctermbg=237
 
 " Move vertically by visual line, only in normal mode
 noremap j gj
