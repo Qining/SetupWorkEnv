@@ -66,6 +66,7 @@ Plugin 'thinca/vim-localrc'
 " language support
 Plugin 'klen/python-mode'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'fatih/vim-go'
 
 " IDE
 Plugin 'scrooloose/syntastic'
@@ -124,6 +125,10 @@ let g:syntastic_python_checkers=["flake8", "pep8"]
 " class.
 let g:syntastic_python_flake8_args='--ignore=E501,C0111'
 let g:syntastic_python_pep8_args='--ignore=E501,C0111'
+
+" Use syntastic with vim-go
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
 
 """" vim-indent-guide options
 let g:indent_guides_start_level=2

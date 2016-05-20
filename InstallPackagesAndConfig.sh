@@ -78,6 +78,9 @@ sudo apt-get -y install xsel
 # vimrc), we have to install clang library, llvm and llvm-dev.
 sudo apt-get -y install llvm libclang-dev llvm-dev
 
+# Install Golang
+sudo apt-get -y install golang
+
 echo -e \
   "
   ##########################
@@ -235,6 +238,24 @@ echo -e \
   ##################################
   "
 exe git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# install Golang tools
+echo -e \
+  "
+  ###########################
+  ## Install Golang tools  ##
+  ###########################
+  "
+export GOPATH=$HOME/Workspace
+# [ref: http://dominik.honnef.co/posts/2014/12/an_incomplete_list_of_go_tools/]
+exe go get github.com/golang/lint/golint
+exe go get github.com/kisielk/errcheck
+exe go get github.com/nsf/gocode
+exe go get github.com/godepgraph
+
+# Use vim-go plugin to install golang tools so that we won't miss anything.
+echo | echo | vim +GoInstallBinaries +qall &>/dev/null
+
 
 
 echo -e \

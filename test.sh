@@ -32,7 +32,8 @@ exe curl --version && \
 # Checking meld cause error in Travis CI
 # exe meld --help > /dev/null && \
 exe pip --version && \
-exe cgdb --version
+exe cgdb --version && \
+exe go version
 
 if [ $? -ne 0 ]; then
   echo "Check System Packages failed"
