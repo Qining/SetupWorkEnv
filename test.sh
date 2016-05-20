@@ -78,7 +78,7 @@ echo -e \
   ######################
   "
 
-# Don't have vim-clang-format install on company machine, so do not check it.
+# Check the existance of vim-plugin dirs.
 VIM_PLUGINS="
   Vundle.vim
   YouCompleteMe
@@ -90,6 +90,7 @@ VIM_PLUGINS="
   vim-multiple-cursors
   vim-sneak
   vim-better-whitespace
+  vim-clang-format
   "
 
 for PLUGIN in $VIM_PLUGINS; do
