@@ -11,6 +11,7 @@ export CPATH=$CPATH:$HOME/Workspace/include
 
 # add default GOPATH
 export GOPATH=$HOME/Workspace/gopath
+export PATH=$PATH:$GOPATH/bin
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's
