@@ -10,8 +10,9 @@ export LIBRARY_PATH=$LIBRARY_PATH:$HOME/Workspace/lib
 export CPATH=$CPATH:$HOME/Workspace/include
 
 # add default GOPATH
+export GOROOT=$HOME/Workspace/tools/go
 export GOPATH=$HOME/Workspace/gopath
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's

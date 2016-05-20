@@ -4,6 +4,9 @@ exe() { echo "\$ $@"; "$@"; }
 
 trap 'echo Ctrl-c, Setup interrupted; exit' INT
 
+# x86_64 or 32-bit?
+MACHINE_TYPE=`uname -m`
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Script directory: '$SCRIPT_DIR'"
 
@@ -78,8 +81,8 @@ sudo apt-get -y install xsel
 # vimrc), we have to install clang library, llvm and llvm-dev.
 sudo apt-get -y install llvm libclang-dev llvm-dev
 
-# Install Golang
-sudo apt-get -y install golang
+# Install Golang [STOP using it as the repo is updated too late]
+# sudo apt-get -y install golang
 
 echo -e \
   "
@@ -248,14 +251,30 @@ echo -e \
 
 source $HOME/.bashrc
 
-# install Golang tools
+# install Golang tools, don't use the one from apt-get
+if ! [ -d $HOME/Workspace/tools/go ]; then
 echo -e \
   "
-  ###########################
-  ## Install Golang tools  ##
-  ###########################
+  ##############################
+  ## Install Golang and tools ##
+  ##############################
   "
 export GOPATH=$HOME/Workspace/gopath
+export GOROOT=$HOME/Workspace/tools/go
+# Get the pre-built binaries.
+exe cd $HOME/Workspace/tools
+if [ $MACHINE_TYPE == 'x86_64' ]; then
+  exe wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz \
+  -O $HOME/Workspace/tools/go-1.6.2.tar.gz
+else
+  exe wget https://storage.googleapis.com/golang/go1.6.2.linux-386.tar.gz \
+  -O $HOME/Workspace/tools/go-1.6.2.tar.gz
+fi
+# This should create a directory with name 'go':
+exe tar -xvf go-1.6.2.tar.gz
+exe cd $HOME
+fi
+
 # [ref: http://dominik.honnef.co/posts/2014/12/an_incomplete_list_of_go_tools/]
 exe go get github.com/golang/lint/golint
 exe go get github.com/kisielk/errcheck
