@@ -332,6 +332,12 @@ augroup CSourceFile
   au FileType c,cpp set cindent
 augroup END
 
+augroup GoFile
+  au!
+  " Use the same go-to-def key-bind as rtag for go
+  au FileType go nnoremap <leader>rj :GoDef <Cr>
+augroup END
+
 augroup PythonFile
   au!
   " Set <leader>y to format current python file.

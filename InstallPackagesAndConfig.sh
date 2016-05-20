@@ -239,6 +239,15 @@ echo -e \
   "
 exe git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+echo -e \
+  "
+  #######################
+  ## Source the bashrc ##
+  #######################
+  "
+
+source $HOME/.bashrc
+
 # install Golang tools
 echo -e \
   "
@@ -246,7 +255,7 @@ echo -e \
   ## Install Golang tools  ##
   ###########################
   "
-export GOPATH=$HOME/Workspace
+export GOPATH=$HOME/Workspace/gopath
 # [ref: http://dominik.honnef.co/posts/2014/12/an_incomplete_list_of_go_tools/]
 exe go get github.com/golang/lint/golint
 exe go get github.com/kisielk/errcheck
@@ -255,17 +264,6 @@ exe go get github.com/godepgraph
 
 # Use vim-go plugin to install golang tools so that we won't miss anything.
 echo | echo | vim +GoInstallBinaries +qall &>/dev/null
-
-
-
-echo -e \
-  "
-  ##############
-  ## Finalize ##
-  ##############
-  "
-
-source $HOME/.bashrc
 
 echo -e \
   "
