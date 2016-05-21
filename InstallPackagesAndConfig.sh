@@ -166,9 +166,9 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
 
   # .inputrc, append $include if the file exists, otherwise create symlink
   if [ -f $HOME/.inputrc ]; then
-    echo "$include ${HOME}/Workspace/personal/inputrc" >> $HOME/.inputrc
+    echo "$include ${SETUP_WORK_ENV_REPO_DIR}/inputrc" >> $HOME/.inputrc
   else
-    ln -s $HOME/.inputrc $HOME/Workspace/personal/inputrc
+    ln -s ${SETUP_WORK_ENV_REPO_DIR}/inputrc $HOME/.inputrc
   fi
 
   #############################################################################
