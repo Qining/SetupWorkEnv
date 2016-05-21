@@ -279,7 +279,7 @@ fi
 exe go get github.com/golang/lint/golint
 exe go get github.com/kisielk/errcheck
 exe go get github.com/nsf/gocode
-exe go get github.com/godepgraph
+exe go get github.com/kisielk/godepgraph
 
 # Use vim-go plugin to install golang tools so that we won't miss anything.
 echo | echo | vim +GoInstallBinaries +qall &>/dev/null

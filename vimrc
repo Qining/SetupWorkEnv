@@ -105,12 +105,15 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 " turn off YCM
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
-"turn on YCM
+" turn on YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " Don't forget to use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to generate
 " compile command json file, then set 'compilation_data_base_folder' to the
 " directory of the generated json file.
+
+" vim-go settings
+let g:go_list_type="quickfix"
 
 """" syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -336,6 +339,7 @@ augroup GoFile
   au!
   " Use the same go-to-def key-bind as rtag for go
   au FileType go nnoremap <leader>rj :GoDef <Cr>
+  au FileType go nnoremap <leader>rf :GoReferrers <Cr>
 augroup END
 
 augroup PythonFile
