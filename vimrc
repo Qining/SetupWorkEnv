@@ -25,6 +25,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'mhinz/vim-hugefile'
 
 " motion, repeating
 Plugin 'easymotion/vim-easymotion'
@@ -43,7 +44,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
   " vim rtags binding
   " common usage:
   " <leader>rf : find references
-  " <leader>rj : go to definiation
+  " <leader>rj : go to definition
+  " <leader>rS : go to definition, open in horizontal split
+  " <leader>rV : go to definition, open in vertical split
+  " <leader>rr : reindex current file
   " <leader>rw : rename symbol under cursor (not tested)
   " Note, only work in C family language.
 Plugin 'lyuts/vim-rtags'
@@ -112,8 +116,11 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 " compile command json file, then set 'compilation_data_base_folder' to the
 " directory of the generated json file.
 
-" vim-go settings
+"""" vim-go settings
+" Use quickfix list so that I can jump to there directly
 let g:go_list_type="quickfix"
+" Do GoMetaLinter on save
+let g:go_metalinter_autosave = 1
 
 """" syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -206,6 +213,9 @@ nnoremap F :CtrlPLine<CR>
 """" vim-polyglot
 " enable all highlights for python
 let g:python_highlight_all=1
+
+"""" vim-hugefile
+let g:hugefile_trigger_size=1
 
 """" vim-clang-format settings
 let g:clang_format#code_style = "google"
@@ -340,6 +350,8 @@ augroup GoFile
   " Use the same go-to-def key-bind as rtag for go
   au FileType go nnoremap <leader>rj :GoDef <Cr>
   au FileType go nnoremap <leader>rf :GoReferrers <Cr>
+  au FileType go nnoremap <leader>rS <Plug>(go-def-split)
+  au FileType go nnoremap <leader>rV <Plug>(go-def-vertical)
 augroup END
 
 augroup PythonFile
