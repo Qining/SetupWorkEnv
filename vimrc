@@ -8,7 +8,11 @@
 
 " All of your plugins must be added before the following line.
 
-" Personal plugins begin
+
+"#################################
+"#### Personal plugins begin #####
+"#################################
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -220,7 +224,10 @@ let g:hugefile_trigger_size=1
 """" vim-clang-format settings
 let g:clang_format#code_style = "google"
 
-"""" generic settings
+
+"################################
+"####### generic settings #######
+"################################
 
 " Use * in visual mode to search selected word
 vnoremap * y/<C-R>"<CR>
@@ -333,7 +340,13 @@ inoremap <C-W> <C-G>u<C-W>
 " Sets the copy paste buffer large enough
 set viminfo-='20,<9000,s9000
 
-"""" autocommands
+" Sets the split to be open at below or right
+set splitbelow
+set splitright
+
+"#############################
+"####### autocommands ########
+"#############################
 
 au BufReadPost * call clearmatches()
 
@@ -350,8 +363,8 @@ augroup GoFile
   " Use the same go-to-def key-bind as rtag for go
   au FileType go nnoremap <leader>rj :GoDef <Cr>
   au FileType go nnoremap <leader>rf :GoReferrers <Cr>
-  au FileType go nnoremap <leader>rS <Plug>(go-def-split)
-  au FileType go nnoremap <leader>rV <Plug>(go-def-vertical)
+  " au FileType go nnoremap <leader>rs <Plug>(go-def-split)
+  " au FileType go nnoremap <leader>rv <Plug>(go-def-vertical)
 augroup END
 
 augroup PythonFile
