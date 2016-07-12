@@ -126,7 +126,7 @@ exe git clone --recursive \
 exe cd $HOME/Workspace/tools/rtags
 # The latest commit will need newer dictionaries-common package, use an older
 # version here (fix it later)
-exe git checkout -f 9b86f0dc850f9a
+exe git checkout -f fb16d8c999e78e749e368ce9a43ca64145f257fc
 exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
 exe make -j`nproc`
 exe cd $HOME/Workspace/bin
