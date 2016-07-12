@@ -51,6 +51,8 @@ sudo apt-get -y install cgdb
 sudo apt-get -y install meld
 # sudo apt-get -y install clang
 sudo apt-get -y install clang-3.6
+# sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-3.6
+# sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.6
 sudo apt-get -y install clang-format-3.6
 sudo apt-get -y install libnotify
 
@@ -122,6 +124,9 @@ mkdir -p $HOME/Workspace/personal
 exe git clone --recursive \
   https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 exe cd $HOME/Workspace/tools/rtags
+# The latest commit will need newer dictionaries-common package, use an older
+# version here (fix it later)
+exe git checkout -f 9b86f0dc850f9a
 exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
 exe make -j`nproc`
 exe cd $HOME/Workspace/bin
