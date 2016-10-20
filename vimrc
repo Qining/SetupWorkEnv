@@ -127,6 +127,8 @@ let g:go_list_type="quickfix"
 let g:go_metalinter_autosave = 1
 " enable goimports to automatically insert import paths
 let g:go_fmt_command = "goimports"
+" Example of setting custom guru analysis scope:
+" let g:go_guru_scope = ['github.com/xxx/yyy/...', '-github.com/xxx/yyy/zzz']
 
 " golang highlights
 let g:go_highlight_functions = 1
