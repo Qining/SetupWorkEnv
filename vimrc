@@ -125,6 +125,17 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 let g:go_list_type="quickfix"
 " Do GoMetaLinter on save
 let g:go_metalinter_autosave = 1
+" enable goimports to automatically insert import paths
+let g:go_fmt_command = "goimports"
+
+" golang highlights
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_structs = 1
 
 """" syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -141,7 +152,7 @@ let g:syntastic_python_flake8_args='--ignore=E501,C0111'
 let g:syntastic_python_pep8_args='--ignore=E501,C0111'
 
 " Use syntastic with vim-go
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
 
 """" vim-indent-guide options
@@ -166,8 +177,8 @@ let g:EasyMotion_smartcase=1
 " need 2 char to trigger, i.e. <leader>s{char}{char}{label}
 " nmap s <plug>(easymotion-overwin-f2)
 " This is exactly what I want!
-" Give me a tag for every WORD, it is like vimium in Chrome now.
-nmap f <plug>(easymotion-bd-W)
+" Give me a tag for every word, it is like vimium in Chrome now.
+nmap f <plug>(easymotion-bd-w)
 " jk motions, use when in easymotion mode
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
@@ -194,9 +205,9 @@ let g:pymode_doc_bind='K'
 " don't need python linter support, I prefer syntastics now.
 let g:pymode_lint=0
 " " select default lint checker
-" let g:pymode_lint_checkers=['pyflakes', 'pep8', 'pylint']
+let g:pymode_lint_checkers=['pyflakes', 'pep8', 'pylint']
 " " please don't panic if I don't add doc string to functions and classes
-" let g:pymode_lint_ignore="C0111,E501"
+let g:pymode_lint_ignore="C0111,E501"
 
 """ vim-markdown options
 " disable folding
@@ -363,6 +374,7 @@ augroup GoFile
   " Use the same go-to-def key-bind as rtag for go
   au FileType go nnoremap <leader>rj :GoDef <Cr>
   au FileType go nnoremap <leader>rf :GoReferrers <Cr>
+  au FileType go nnoremap <leader>i <Plug>(go-info)
   " au FileType go nnoremap <leader>rs <Plug>(go-def-split)
   " au FileType go nnoremap <leader>rv <Plug>(go-def-vertical)
 augroup END
