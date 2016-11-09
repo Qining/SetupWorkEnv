@@ -32,11 +32,6 @@ sudo apt-get -y install gcc-4.9 g++-4.9 ninja
 # Compiling tmux needs libevent-dev
 sudo apt-get -y install libevent-dev
 
-# We have to export again here, I don't know why previous export is not
-# respected.
-if [ -f /usr/bin/gcc-4.9 ]; then export CC=/usr/bin/gcc-4.9; fi
-if [ -f /usr/bin/g++-4.9 ]; then export CXX=/usr/bin/g++-4.9; fi
-
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake flex texinfo libtool mingw-w64 pbzip2
@@ -51,8 +46,16 @@ sudo apt-get -y install cgdb
 sudo apt-get -y install meld
 # sudo apt-get -y install clang
 sudo apt-get -y install clang-3.6
-# sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-3.6
-# sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.6
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-3.6
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.6
+
+# We have to export again here, I don't know why previous export is not
+# respected.
+# if [ -f /usr/bin/gcc-4.9 ]; then export CC=/usr/bin/gcc-4.9; fi
+# if [ -f /usr/bin/g++-4.9 ]; then export CXX=/usr/bin/g++-4.9; fi
+export CC=/usr/bin/clang-3.6
+export CXX=/usr/bin/clang++-3.6
+
 sudo apt-get -y install clang-format-3.6
 sudo apt-get -y install libnotify
 
