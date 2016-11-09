@@ -26,7 +26,7 @@ sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get -y install htop git
 sudo apt-get -y install build-essential make flex bison patch
-sudo apt-get -y install gcc-4.9 g++-4.9
+sudo apt-get -y install gcc-4.9 g++-4.9 ninja
 
 # We install tmux by compiling from source (1.8 has bug with clipboard)
 # Compiling tmux needs libevent-dev
@@ -125,12 +125,14 @@ exe git clone --recursive \
   https://github.com/Andersbakken/rtags.git $HOME/Workspace/tools/rtags
 exe cd $HOME/Workspace/tools/rtags
 # The latest commit will need newer dictionaries-common package, use an older
-# version here (fix it later)
-exe git checkout -f fb16d8c999e78e749e368ce9a43ca64145f257fc
-exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-exe make -j`nproc`
+# version here (fix it later) (seems to be fixed, Nov 9 2016)
+# exe git checkout -f fb16d8c999e78e749e368ce9a43ca64145f257fc
+exe mkdir $HOME/Workspace/tools/rtags/build
+exe cd $HOME/Workspace/tools/rtags/build
+exe cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DRTAGS_NO_ELISP_FILES=1 ../
+exe ninja
 exe cd $HOME/Workspace/bin
-exe ln -s $HOME/Workspace/tools/rtags/bin/* ./
+exe ln -s $HOME/Workspace/tools/rtags/build/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
 
