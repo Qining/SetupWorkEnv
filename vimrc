@@ -59,6 +59,8 @@ Plugin 'lyuts/vim-rtags'
   " And adding it again will cause some conflit, check the existence before
   " installing this plugin.
 Plugin 'rhysd/vim-clang-format'
+  " A vim plugin that applies yapf to the current file.
+Plugin 'pignacio/vim-yapf-format'
 
   " Toggle comments faster
   " <leader>cc : set to comment
@@ -237,6 +239,8 @@ let g:hugefile_trigger_size=1
 """" vim-clang-format settings
 let g:clang_format#code_style = "google"
 
+"""" vim-yapf-format settings
+let g:yapf_format_style = "google"
 
 "################################
 "####### generic settings #######
@@ -385,7 +389,9 @@ augroup PythonFile
   au!
   " Set <leader>y to format current python file.
   " Assume the yapf lib directory is at $HOME/Workspace/lib/yapf
-  au FileType python nnoremap <leader>y :0,$!yapf<Cr>
+  " <Following one is abandoned as vim-yapf-format does a better job>
+  " au FileType python nnoremap <leader>y :0,$!yapf<Cr>
+  au FileType python nnoremap <leader>y :YapfFormat<Cr>
 augroup END
 
 augroup NasmFile
