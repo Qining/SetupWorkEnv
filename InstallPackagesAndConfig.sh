@@ -132,6 +132,8 @@ exe cd $HOME/Workspace/tools/rtags
 # exe git checkout -f fb16d8c999e78e749e368ce9a43ca64145f257fc
 exe mkdir $HOME/Workspace/tools/rtags/build
 exe cd $HOME/Workspace/tools/rtags/build
+# Cannot use 'ninja' here, cmake will complain 'ninja' not work for C
+# compilation.
 exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DRTAGS_NO_ELISP_FILES=1 ../
 exe make -j`nproc`
 exe cd $HOME/Workspace/bin
