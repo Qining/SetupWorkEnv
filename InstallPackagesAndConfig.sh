@@ -132,8 +132,8 @@ exe cd $HOME/Workspace/tools/rtags
 # exe git checkout -f fb16d8c999e78e749e368ce9a43ca64145f257fc
 exe mkdir $HOME/Workspace/tools/rtags/build
 exe cd $HOME/Workspace/tools/rtags/build
-exe cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DRTAGS_NO_ELISP_FILES=1 ../
-exe ninja
+exe cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DRTAGS_NO_ELISP_FILES=1 ../
+exe make -j`nproc`
 exe cd $HOME/Workspace/bin
 exe ln -s $HOME/Workspace/tools/rtags/build/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
