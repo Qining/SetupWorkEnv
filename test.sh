@@ -12,7 +12,7 @@ echo -e \
   ## Check System Packages ##
   ###########################
   "
-
+# commands and executables
 exe ssh -V && \
 exe make -v && \
 exe vim --version && \
@@ -33,7 +33,10 @@ exe curl --version && \
 # exe meld --help > /dev/null && \
 exe pip --version && \
 exe cgdb --version && \
-exe go version
+exe go version && \
+
+# libraries
+exe ldconfig -p | grep libcgraph
 
 if [ $? -ne 0 ]; then
   echo "Check System Packages failed"

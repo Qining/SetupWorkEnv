@@ -126,7 +126,7 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 " Use quickfix list so that I can jump to there directly
 let g:go_list_type="quickfix"
 " Do GoMetaLinter on save
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 " enable goimports to automatically insert import paths
 let g:go_fmt_command = "goimports"
 " Example of setting custom guru analysis scope:

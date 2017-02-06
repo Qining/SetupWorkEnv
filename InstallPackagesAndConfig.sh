@@ -86,8 +86,12 @@ sudo apt-get -y install xsel
 # vimrc), we have to install clang library, llvm and llvm-dev.
 sudo apt-get -y install llvm libclang-dev llvm-dev
 
-# Install Golang [STOP using it as the repo is updated too late]
+# Install Golang [STOP using apt as the repository is updated so laggy]
 # sudo apt-get -y install golang
+
+# Install libcgraph6, graphviz and graphviz-dev, they are necessary for
+# pygraphviz package.
+sudo apt-get -y install libcgraph6 graphviz graphviz-dev
 
 echo -e \
   "
@@ -224,6 +228,9 @@ exe pip install --user coverage
 # An easy-to-use python module for schedule task per day/month/...
 exe pip install --user schedule
 
+# A easy to use wrapper for 'dot' to draw directed graph in python
+exe pip install --user pygraphviz
+
 echo -e \
   "
   ################
@@ -263,7 +270,7 @@ echo -e \
 
 source $HOME/.bashrc
 
-# install Golang tools, don't use the one from apt-get
+# install Golang 1.6 tools, don't use the one from apt-get
 if ! [ -d $HOME/Workspace/tools/go ]; then
 echo -e \
   "
