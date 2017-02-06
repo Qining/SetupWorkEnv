@@ -229,7 +229,7 @@ exe pip install --user coverage
 exe pip install --user schedule
 
 # A easy to use wrapper for 'dot' to draw directed graph in python
-exe pip install --user pygraphviz
+exe pip install --user pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"
 
 echo -e \
   "
