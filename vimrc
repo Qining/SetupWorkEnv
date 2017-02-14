@@ -271,7 +271,10 @@ set backspace=indent,eol,start
 " line.
 set autoindent
 " smartindent (short for si), do smart auto indenting when starting a new line.
-set smartindent
+" set smartindent
+" Use cindent instead of smartindent, as smartindent always put python
+" comments at the beginning of the line
+set cindent
 
 " show line number
 set nu
