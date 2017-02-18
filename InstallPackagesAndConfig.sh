@@ -26,7 +26,7 @@ sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get -y install htop git
 sudo apt-get -y install build-essential make flex bison patch
-sudo apt-get -y install gcc-4.9 g++-4.9 ninja
+sudo apt-get -y install gcc-4.9 g++-4.9 ninja-build
 
 # We install tmux by compiling from source (1.8 has bug with clipboard)
 # Compiling tmux needs libevent-dev
