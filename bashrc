@@ -31,5 +31,8 @@ alias irssi='TERM=screen-256color irssi'
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 
+# Chrome remote desktop default resolution (optional)
+# export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="1366x768"
+
 # Setup Done Flag
 export SETUP_ENV_DONE=true

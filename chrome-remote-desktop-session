@@ -1,0 +1,18 @@
+# This script is from
+# https://support.google.com/chrome/answer/1649523?hl=en&vid=0-721391639987-1487603342526
+# But it only works for Ubuntu, which uses LightDM
+# exec /usr/bin/lightdm-session "<YOUR_EXEC_COMMAND from /usr/share/xsessions/*.desktop>"
+
+# for Mint, which uses MDM, instead of LightDM, use the following script
+# exec /etc/mdm/Xsession "cinnamon-session-cinnamon2d"
+
+## IMPORTANT ##
+# Check this out first for using Chrome-remote-desktop as host on Linux machine
+# https://superuser.com/questions/778028/configuring-chrome-remote-desktop-with-ubuntu-gnome-14-04/850359#850359
+
+# Log Feb 20, 2017
+# On Mint 18, no need to set the "exec /etc/...." command, just need to follow
+# the instrctions in the SuperUser website and set the default desktop size
+# (export to the environment with 1366x768)
+# Apply the following diff on /opt/google/chrome-remote-desktop/chrome-remote-desktop
+# Diff of changes: diff_opt_google_chrome-remote-desktop_chrome-remote-desktop
