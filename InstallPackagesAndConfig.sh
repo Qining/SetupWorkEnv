@@ -35,7 +35,10 @@ sudo apt-get -y install libevent-dev
 sudo apt-get -y install gedit libzip-dev trash-cli p7zip-full curl
 sudo apt-get -y install libncurses-dev libmpfr-dev libmpc-dev
 sudo apt-get -y install cmake flex texinfo libtool mingw-w64 pbzip2
-sudo apt-get -y install vim emacs
+sudo apt-get -y install vim emacs vim-gnome-py2
+# On Ubuntu 16.04, default vim is compiled with python3, but we
+# may need python2 support.
+sudo apt-get -y install vim-gnome-py2
 
 # To use tagbar plugin for vim, we need this.
 sudo apt-get -y install exuberant-ctags
@@ -144,6 +147,11 @@ exe cd $HOME/Workspace/bin
 exe ln -s $HOME/Workspace/tools/rtags/build/bin/* ./
 # Run 'rdm &' in an new tmux session. Don't use vim with rtags in a same
 # terminal/session with 'rdm', as 'rdm's output will break vim's draw buffer.
+
+# Symbolic link of the python2 vim, if it exists.
+if [ -f /usr/bin/vim.gnome-py2 ]; then
+  exe ln -s /usr/bin/vim.gnome-py2 $HOME/Workspace/bin/vim
+fi
 
 # Dowload and compile tmux and install to default dir
 exe wget https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz \
