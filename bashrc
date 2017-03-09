@@ -1,4 +1,4 @@
-# Functions
+# Functions and alias
 ## pd: quickly switch between folders
 function pd()
 {
@@ -27,6 +27,12 @@ function pd()
     fi
     pushd $choice
 }
+
+## pcd: push the current directory to stack
+alias pcd='pushd -n $(pwd)'
+
+## git-log-full:
+alias git-log-full='git log --all --graph --decorate'
 
 # Paths
 export PATH=$HOME/Workspace/bin:$PATH
