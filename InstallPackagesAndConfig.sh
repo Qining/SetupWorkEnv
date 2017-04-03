@@ -256,7 +256,7 @@ echo -e \
 echo | echo | vim +PluginInstall +qall
 
 # YouCompleteMe (ycm) needs manual installation
-cd $HOME/.vim/bundle/YouCompleteMe && python ./install.py --clang-completer
+cd $HOME/.vim/bundle/YouCompleteMe && python ./install.py --clang-completer --gocode-completer
 
 # flush vundle again.
 echo | echo | vim +PluginInstall +qall &>/dev/null

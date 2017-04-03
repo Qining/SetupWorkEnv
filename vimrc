@@ -118,6 +118,18 @@ nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 " turn on YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'go' : ['.'],
+  \   'objc' : ['->', '.'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
 " Don't forget to use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to generate
 " compile command json file, then set 'compilation_data_base_folder' to the
 " directory of the generated json file.
@@ -133,13 +145,13 @@ let g:go_fmt_command = "goimports"
 " let g:go_guru_scope = ['github.com/xxx/yyy/...', '-github.com/xxx/yyy/zzz']
 
 " golang highlights
-let g:go_highlight_functions = 1
+" let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
+" let g:go_highlight_structs = 1
 
 """" syntastic settings
 let g:syntastic_always_populate_loc_list=1
