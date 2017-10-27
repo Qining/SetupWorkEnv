@@ -16,6 +16,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set noswapfile                " disable swap file
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -82,13 +84,15 @@ Plugin 'fatih/vim-go'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 " Personal plugins end
 
 """" airline settings
 set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+
 
 """" NerdTree settings
 " Toogle folder tree split
@@ -375,6 +379,10 @@ set viminfo-='20,<9000,s9000
 " Sets the split to be open at below or right
 set splitbelow
 set splitright
+
+" Shift+Tab to switch to previous buffer, and Tab to the next buffer
+nnoremap <s-tab> :bprevious<CR>
+nnoremap  <tab> :bnext<CR>
 
 "#############################
 "####### autocommands ########

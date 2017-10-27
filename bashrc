@@ -40,16 +40,18 @@ export PATH=$PATH:$HOME/.local/bin
 export MYTMP=$HOME/Workspace/tmp
 
 # add lib to link search path
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Workspace/lib
-export LIBRARY_PATH=$LIBRARY_PATH:$HOME/Workspace/lib
+export LD_LIBRARY_PATH=$HOME/Workspace/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$HOME/Workspace/lib:$LIBRARY_PATH
 # add include dir
-export CPATH=$CPATH:$HOME/Workspace/include
+export CPATH=$HOME/Workspace/include:$CPATH
 
 # add default GOPATH and use the downloaded golang
 export GOROOT=$HOME/Workspace/tools/go
 export GOPATH=$HOME/Workspace/gopath
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+export C_INCLUDE_PATH=$HOME/Workspace/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$HOME/Workspace/include:$CPLUS_INCLUDE_PATH
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
 # originally set to TERM="xterm-256color", but it will cause problem with vim's
 # background color (set with colorscheme): only regions that are covered with
