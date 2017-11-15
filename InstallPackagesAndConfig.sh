@@ -179,7 +179,14 @@ if [ -z ${SETUP_WORK_ENV_DONE+x} ]; then
   echo "source ${SETUP_WORK_ENV_REPO_DIR}/bashrc" >> $HOME/.bashrc
 
   # source vimrc
-  echo "source ${SETUP_WORK_ENV_REPO_DIR}/vimrc" >> $HOME/.vimrc
+  # echo "source ${SETUP_WORK_ENV_REPO_DIR}/vimrc" >> $HOME/.vimrc
+  echo "Download vim-plug"
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  echo "Copy vimrc and ftplugin"
+  cp $SETUP_WORK_ENV_REPO_DIR/vimrc $HOME/.vimrc
+  cp -r $SETUP_WORK_ENV_REPO_DIR/ftplugin $HOME/.vim/
 
   # source the tmux.conf
   echo "source ${SETUP_WORK_ENV_REPO_DIR}/tmux.conf" >> $HOME/.tmux.conf
@@ -253,13 +260,13 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 echo -e \
   "\nInstalling vim plugins, this may take a while (due to YouCompleteMe).\n"
 # echo | echo | vim +PluginInstall +qall &>/dev/null
-echo | echo | vim +PluginInstall +qall
+echo | echo | vim +PlugInstall +qall
 
 # YouCompleteMe (ycm) needs manual installation
-cd $HOME/.vim/bundle/YouCompleteMe && python ./install.py --clang-completer --gocode-completer
+cd $HOME/.vim/plugged/YouCompleteMe && python ./install.py --clang-completer --gocode-completer
 
-# flush vundle again.
-echo | echo | vim +PluginInstall +qall &>/dev/null
+# flush vim-plug again.
+echo | echo | vim +PlugInstall +qall &>/dev/null
 
 echo -e \
   "
