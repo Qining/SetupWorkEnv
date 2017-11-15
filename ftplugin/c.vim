@@ -14,12 +14,6 @@ let b:ycm_collect_identifiers_from_tags_files=1
 "" turn on/off YCM auto completion
 nnoremap <leader>y :let b:ycm_auto_trigger=0<CR>
 nnoremap <leader>Y :let b:ycm_auto_trigger=1<CR>
-"" set YCM auto completion trigger
-let b:ycm_semantic_triggers = {
-  \ 'c' : ['->', '.'],
-  \ 'objc' : ['->', '.'],
-  \ 'cpp, objcpp' : ['->', '.', '::'],
-  \ }
 
 """" syntastic settings
 "" turn on syntax checking for c/cpp headers
