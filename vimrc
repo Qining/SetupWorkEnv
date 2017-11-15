@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'mhinz/vim-hugefile'
+"Plug 'mhinz/vim-hugefile'
 
 "" motion, repeating
 Plug 'easymotion/vim-easymotion'
@@ -34,7 +34,7 @@ Plug 'bling/vim-airline'
 " Plug 'majutsushi/tagbar'
 
 "" language
-Plug 'Valloric/YouCompleteMe', {'for': ['cpp', 'c']}
+Plug 'Valloric/YouCompleteMe', {'for': ['cpp', 'c', 'objcpp', 'objc', 'go', 'java']}
   " vim rtags binding
   " common usage:
   " <leader>rf : find references
@@ -67,6 +67,10 @@ set background=dark
 colorscheme desertEx
 highlight Normal ctermbg=none
 set t_Co=256
+
+"""" airline settings
+set laststatus=2
+let g:airline#extensions#tabline#enabled=1
 
 """" vim-easymotion settings
 "" disable default mapping first
@@ -213,3 +217,9 @@ set splitright
 nnoremap <s-tab> :bprevious<CR>
 nnoremap  <tab> :bnext<CR>
 
+"" indent settings
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+set expandtab

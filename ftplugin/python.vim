@@ -21,6 +21,8 @@ let b:syntastic_python_checkers=["flake8", "pep8"]
 "" ignore C0111: (only valid for pylint?) panic when no doc for cls and func
 let b:syntastic_python_flake8_args='--ignore=E501,C0111'
 let b:syntastic_python_pep8_args='--ignore=E501,C0111'
+"" enable checking on saving
+let b:syntastic_check_on_wq=1
 
 """" vim-yapf-format settings
 "" use google style
