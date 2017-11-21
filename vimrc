@@ -213,9 +213,15 @@ set viminfo-='20,<9000,s9000
 set splitbelow
 set splitright
 
-"" Shift+Tab to switch to previous buffer, and Tab to the next buffer
-nnoremap <s-tab> :bprevious<CR>
-nnoremap  <tab> :bnext<CR>
+"" Shift+Tab to switch to previous buffer, and Tab to the next buffer and list
+"" buffers after switching.
+nnoremap <s-tab> :pclose<CR>:bprevious<CR>:redraw<CR>
+nnoremap  <tab> :pclose<CR>:bnext<CR>:redraw<CR>
+
+"" set hidden option so any buffer can be hidden (keeping its changes) without
+"" first writing the buffer to a file, this affect all commands and all
+"" buffers
+set hidden
 
 "" indent settings
 set tabstop=2
@@ -223,3 +229,6 @@ set shiftwidth=2
 set softtabstop=2
 set smarttab
 set expandtab
+
+"" disable folding
+set nofoldenable
