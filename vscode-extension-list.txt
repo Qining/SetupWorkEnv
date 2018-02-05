@@ -8,3 +8,4 @@ ms-vscode.cpptools
 tickleforce.scrolloff
 vscodevim.vim
 zxh404.vscode-proto3
+RoscoP.activefileinstatusbar

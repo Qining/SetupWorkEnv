@@ -1,0 +1,31 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // Switch editor groups with alt+h/l
+    {"key": "alt+h", "command":"workbench.action.focusPreviousGroup"},
+    {"key": "alt+l", "command":"workbench.action.focusNextGroup"},
+    // Use tab and shift-tab to cycle through suggestions and quickfix.
+    {"key": "tab", "command":"selectNextQuickFix", "when":"editorFocus && quickFixWidgetVisible"},
+    {"key": "shift+tab", "command":"selectPrevQuickFix", "when":"editorFocus && quickFixWidgetVisible"},
+    {"key": "tab", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+    { "key": "shift+tab", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
+    // Use alt to switch between panel (terminal) and editor
+    { "key": "alt+k", "command": "workbench.action.focusActiveEditorGroup", "when":"!editorTextFocus", },
+    { "key": "alt+j", "command": "workbench.action.focusPanel"},
+    // Change the behaviour of shift+tab to prevEditor, this is added here
+    // because vscodevim does not handle shift+tab
+    {
+        "key": "shift+tab",
+        "command": "-outdent",
+        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus && vim.active"
+    },
+    {
+        "key": "shift+tab",
+        "command": "-jumpToPrevSnippetPlaceholder",
+        "when": "editorTextFocus && hasPrevTabstop && inSnippetMode && vim.active"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "editorTextFocus && vim.active"
+    },
+]
