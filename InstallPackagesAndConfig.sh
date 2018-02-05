@@ -104,7 +104,7 @@ echo -e \
   "
 
 # Set the key repeat rate to the max (or key repeat interval to the least).
-sudo kbdrate -r 30
+# sudo kbdrate -r 30
 # If working on Cinnamon:
 # gsettings set org.cinnamon.settings-daemon.peripherals.keyboard repeat true
 # gsettings set org.cinnamon.settings-daemon.peripherals.keyboard repeat-interval 1
@@ -163,6 +163,7 @@ exe ./configure
 exe make -j4
 exe sudo make install
 exe cd $HOME
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # clone the setup work env repo if such a clone has not been done yet.

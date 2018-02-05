@@ -45,9 +45,7 @@ removeFromPath() {
 }
 
 # Paths
-export PATH=$HOME/Workspace/bin:$PATH
-export PATH=$PATH:$HOME/.local/bin
-export MYTMP=$HOME/Workspace/tmp
+export PATH=$HOME/Workspace/bin:$HOME/.local/bin:$PATH
 
 # add lib to link search path
 export LD_LIBRARY_PATH=$HOME/Workspace/lib:$LD_LIBRARY_PATH
@@ -80,9 +78,9 @@ if [ -f /usr/bin/clang ]; then
   export CC=/usr/bin/clang
   export CXX=/usr/bin/clang++
 else
-  if [ -f /usr/bin/clang-3.6 ]; then
-    export CC=/usr/bin/clang-3.6
-    export CXX=/usr/bin/clang++-3.6
+  if [ -f /usr/bin/clang-3.8 ]; then
+    export CC=/usr/bin/clang-3.8
+    export CXX=/usr/bin/clang++-3.8
   fi
 fi
 
@@ -91,4 +89,4 @@ fi
 # export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="1366x768"
 
 # Setup Done Flag
-export SETUP_ENV_DONE=true
+# export SETUP_ENV_DONE=true
