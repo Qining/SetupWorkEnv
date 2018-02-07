@@ -1,0 +1,45 @@
+## ==== pd: quickly switch between folders ==== ##
+function pd()
+{
+    if [[ $# -ge 1 ]];
+    then
+        choice="$1"
+    else
+        dirs -v
+        echo -n "? "
+        read choice
+    fi
+    if [[ -n $choice ]];
+    then
+        declare -i cnum="$choice"
+        if [[ $cnum != $choice ]];
+        then #choice is not numeric
+            choice=$(dirs -v | grep $choice | tail -1 | awk '{print $1}')
+            cnum="$choice"
+            if [[ -z $choice || $cnum != $choice ]];
+            then
+                echo "$choice not found"
+                return
+            fi
+        fi
+        choice="+$choice"
+    fi
+    pushd $choice
+}
+
+## ==== pcd: push the current directory to stack ==== ##
+alias pcd='pushd -n $(pwd)'
+
+## ==== git-log-full: show the full history of git ==== ##
+alias git-log-full='git log --all --graph --decorate'
+
+## ==== remove a path from $PATH, note that the suffix '/' matters ==== ##
+removeFromPath() {
+  local p d
+  p=":$1:"
+  d=":$PATH:"
+  d=${d//$p/:}
+  d=${d/#:/}
+  PATH=${d/%:/}
+}
+
