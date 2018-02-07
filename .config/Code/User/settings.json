@@ -8,6 +8,12 @@
     "files.trimTrailingWhitespace": false,
     "editor.rulers": [80],
 
+    /* ==== If '_' show as ' ' in terminal, change the font size ==== */
+    "terminal.integrated.fontSize": 13,
+
+    /* ==== Do not ignore files in .gitignore when searching files ==== */
+    "search.useIgnoreFiles": false,
+
     /* ==== Fall back C++ format ====*/
     "C_Cpp.clang_format_fallbackStyle": "Google",
 
@@ -104,5 +110,4 @@
         // vscodevim does not handle shift+tab.
         {"before": ["<tab>"], "after":[], "commands": [{"command":"workbench.action.nextEditorInGroup", "args": []}]},
     ],
-    "workbench.colorTheme": "DesertEx",
 }

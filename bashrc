@@ -50,6 +50,7 @@ export PATH=$HOME/Workspace/bin:$HOME/.local/bin:$PATH
 # add lib to link search path
 export LD_LIBRARY_PATH=$HOME/Workspace/lib:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$HOME/Workspace/lib:$LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/Workspace/pkgconfig:$PKG_CONFIG_PATH
 # add include dir
 export CPATH=$HOME/Workspace/include:$CPATH
 
