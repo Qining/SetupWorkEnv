@@ -3,6 +3,7 @@ export GOROOT=$HOME/Workspace/tools/go
 export GOPATH=$HOME/Workspace/gopath
 
 ## ==== Paths ==== ##
+export ORIGPATH=$PATH
 export PATH=$HOME/Workspace/bin:$HOME/.local/bin:$GOPATH/bin:$GOROOT/bin:$PATH
 
 ## ==== Local installed headers ==== ##
