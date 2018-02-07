@@ -34,7 +34,7 @@ alias pcd='pushd -n $(pwd)'
 alias git-log-full='git log --all --graph --decorate'
 
 ## ==== remove a path from $PATH, note that the suffix '/' matters ==== ##
-removeFromPath() {
+remove-path() {
   local p d
   p=":$1:"
   d=":$PATH:"

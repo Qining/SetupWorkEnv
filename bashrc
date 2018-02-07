@@ -37,4 +37,4 @@ alias irssi='TERM=screen-256color irssi'
 # export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="1366x768"
 
 ## ==== Functions and alias ==== ##
-source ./functions_alias
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/functions_alias
