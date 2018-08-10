@@ -1,3 +1,6 @@
+## ==== Avoid duplication ==== ##
+export HISTCONTROL=ignoredups
+
 ## ==== GOPATH and GOROOT ==== ##
 export GOROOT=$HOME/Workspace/tools/go
 export GOPATH=$HOME/Workspace/gopath
@@ -7,15 +10,15 @@ export ORIGPATH=$PATH
 export PATH=$HOME/Workspace/bin:$HOME/.local/bin:$GOPATH/bin:$GOROOT/bin:$PATH
 
 ## ==== Local installed headers ==== ##
-export CPATH=$HOME/Workspace/include:$CPATH
-export INCLUDE=$HOME/Workspace/include:$INCLUDE
-export C_INCLUDE_PATH=$HOME/Workspace/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=$HOME/Workspace/include:$CPLUS_INCLUDE_PATH
+export CPATH=$HOME/Workspace/include:${CPATH:-}
+export INCLUDE=$HOME/Workspace/include:${INCLUDE:-}
+export C_INCLUDE_PATH=$HOME/Workspace/include:${C_INCLUDE_PATH:-}
+export CPLUS_INCLUDE_PATH=$HOME/Workspace/include:${CPLUS_INCLUDE_PATH:-}
 
 ## ==== Local installed libraries ==== ##
-export LD_LIBRARY_PATH=$HOME/Workspace/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=$HOME/Workspace/lib:$LIBRARY_PATH
-export PKG_CONFIG_PATH=$HOME/Workspace/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$HOME/Workspace/lib:${LD_LIBRARY_PATH:-}
+export LIBRARY_PATH=$HOME/Workspace/lib:${LIBRARY_PATH:-}
+export PKG_CONFIG_PATH=$HOME/Workspace/lib/pkgconfig:${PKG_CONFIG_PATH:-}
 
 ## ==== Misc ==== ##
 # Solve the color scheme problem for YCM suggestion bar under tmux session.
@@ -29,7 +32,7 @@ export TERM="screen-256color"
 
 # Irrsi doesn't scroll in tmux out of box, add following alias to solve the
 # problem
-alias irssi='TERM=screen-256color irssi'
+# alias irssi='TERM=screen-256color irssi'
 
 
 ## ==== Chrome desktop settings ==== ##

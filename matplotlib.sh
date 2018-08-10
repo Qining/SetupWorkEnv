@@ -2,12 +2,12 @@
 
 exe() { echo "\$ $@"; "$@"; }
 
-trap 'echo Ctrl-c, Setup interrupted; exit' INT
 me=`basename "$0"`
+trap 'echo Ctrl-c, Setup ${me} interrupted; exit' INT
 echo "${me} -- Start"
 
-exe sudo apt-get -y install python-dev python-pip python-setuptools
-exe sudo apt-get -y install libpng-dev libfreetype6-dev
+sudo apt-get -y install python-dev python-pip python-setuptools
+sudo apt-get -y install libpng-dev libfreetype6-dev
 
 exe pip install --user python-dateutil
 exe pip install --user subprocess32

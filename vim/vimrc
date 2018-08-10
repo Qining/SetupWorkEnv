@@ -32,6 +32,7 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 " Plug 'majutsushi/tagbar'
+" Plug 'ervandew/supertab'
 
 "" language
 Plug 'Valloric/YouCompleteMe', {'for': ['cpp', 'c', 'objcpp', 'objc', 'go', 'java']}

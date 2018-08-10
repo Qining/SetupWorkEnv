@@ -7,13 +7,21 @@
     "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": false,
     "editor.rulers": [80],
+    "window.zoomLevel": 0,
+    "explorer.confirmDragAndDrop": false,
+
+    /* ==== C++ style ==== */
+    "C_Cpp.clang_format_fallbackStyle": "Google",
 
     /* ==== Zen mode ====*/
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
 
+    /* ==== Go ====*/
+    "go.testFlags": ["-v"],
+
     /*==== Scrolloff settings ====*/
-    "scrolloff.scrolloff": 15,
+    // "scrolloff.scrolloff": 15,
 
     /*==== Vscodevim settings ====*/
     // Enable easymotion
@@ -64,8 +72,41 @@
         // Ctrl-v works as paste from system clipboard in Insert mode
         { "before": ["<C-v>"], "after": ["<C-r>", "<C-o>", "+"] }
     ],
+    // Keybinding remapping for visual mode
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Move cursor intuitively with very long line
+        { "before": ["j"], "after": ["g", "j"], },
+        { "before": ["k"], "after": ["g", "k"], },
+        // Remapping for easymotion
+        // Use 'f' to jump to head of any word
+        { "before": ["f"], "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"] },
+        // Mimic Vim Sneak plugin 's' with easymotion
+        { "before": ["s"], "after": ["<leader>", "<leader>", "2", "f"] },
+        // Mimic Vim Sneak plugin 'S' with easymotion
+        { "before": ["S"], "after": ["<leader>", "<leader>", "2", "F"] },
+        // Enable vim-commentary
+        { "before": ["<leader>", "c", "c"], "after": ["g", "c", "c"], },
+        // Also toggle with <leader>cu, personal custom
+        { "before": ["<leader>", "c", "u"], "after": ["g", "c", "c"], },
+        // Mimic multi-cusor plugin in Vim
+        { "before": ["<C-n>"], "after": ["g", "b"], },
+        // Mimic rtag Goto-Def in Vim
+        { "before": ["<leader>", "r", "j"], "after": ["g", "d"] },
+        // Wrap with Q
+        { "before": ["Q"], "after": ["g", "q"] },
+        // Keep search result at the center
+        { "before": ["n"], "after": ["n", "z", "z"] },
+        { "before": ["N"], "after": ["N", "z", "z"] },
+        // Use Vscode undo stack
+        { "before": ["u"], "after":[], "commands":[ { "command": "undo", "args": [] } ] },
+        { "before": ["<C-r>"], "after": [], "commands": [ { "command":
+        "redo", "args": [] } ] },
+        // Use tab to switch to the next tab. Shift+tab is not handled here as
+        // vscodevim does not handle shift+tab.
+        {"before": ["<tab>"], "after":[], "commands": [{"command":"workbench.action.nextEditorInGroup", "args": []}]},
+    ],
     // Keybinding remappings for Normal/Selection mode
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         // Move cursor intuitively with very long line
         { "before": ["j"], "after": ["g", "j"], },
         { "before": ["k"], "after": ["g", "k"], },
