@@ -15,7 +15,7 @@ echo "${me} -- Start"
 sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get -y install htop git
-sudo apt-get -y install build-essential make flex bison patch
+sudo apt-get -y install build-essential make flex bison patch gcc g++
 sudo apt-get -y ninja-build
 sudo apt-get -y install meld gedit libzip-dev trash-cli p7zip-full curl
 
