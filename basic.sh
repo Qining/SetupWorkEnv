@@ -32,7 +32,7 @@ else
 fi
 
 ## Back up the current env
-exe ${SCRIPT_DIR}/DumpCurrentEnv.sh ${SCRIPT_DIR}/env_backup.sh
+exe ${SCRIPT_DIR}/DumpCurrentEnv.sh ${SCRIPT_DIR}/env_backuped.sh
 
 echo -e \
   "You may want to add 'source ${SCRIPT_DIR}/bashrc' to $HOME/bashrc"
