@@ -5,27 +5,35 @@ dist: trusty
 os:
   - linux
 
-# Travis CI is powered with Ubuntu 12.04, whose toolchain is outdated.
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - kubuntu-backports
-      - llvm-toolchain-precise-3.6
-    packages:
-      - cmake
-      - gcc-4.9
-      - g++-4.9
-      - clang-3.6
-      - ninja-build
-      - lcov
-
-before_install:
-    # Make sure that gcc-4.9 is selected.
-  - if [ "$CC" = "gcc"   ]; then export CC=gcc-4.9 CXX=g++-4.9; fi
-    # Make sure that clang-3.6 is selected.
-  - if [ "$CC" = "clang" ]; then export CC=clang-3.6 CXX=clang++-3.6; fi
+services:
+  - docker
 
 script:
-  - ./InstallPackagesAndConfig.sh
-  - ./test.sh
+  - docker build -t test:v1 .
+  - docker run test
+
+# Stale configs
+# # Travis CI is powered with Ubuntu 12.04, whose toolchain is outdated.
+# addons:
+  # apt:
+    # sources:
+      # - ubuntu-toolchain-r-test
+      # - kubuntu-backports
+      # - llvm-toolchain-precise-3.6
+    # packages:
+      # - cmake
+      # - gcc-4.9
+      # - g++-4.9
+      # - clang-3.6
+      # - ninja-build
+      # - lcov
+
+# before_install:
+    # # Make sure that gcc-4.9 is selected.
+  # - if [ "$CC" = "gcc"   ]; then export CC=gcc-4.9 CXX=g++-4.9; fi
+    # # Make sure that clang-3.6 is selected.
+  # - if [ "$CC" = "clang" ]; then export CC=clang-3.6 CXX=clang++-3.6; fi
+
+# script:
+  # - ./InstallPackagesAndConfig.sh
+  # - ./test.sh
