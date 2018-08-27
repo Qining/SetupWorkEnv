@@ -11,6 +11,9 @@ echo "${me} -- Start"
 
 sudo apt-get install -y tmux
 
+# Use xsel, not xclip
+sudo apt-get install -y xsel
+
 if [ -d $HOME/.tmux/plugins/tpm ]; then
   rm -rf $HOME/.tmux/plugins/tpm
 fi

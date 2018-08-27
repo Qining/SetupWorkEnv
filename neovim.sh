@@ -16,6 +16,9 @@ echo "${me} -- Start"
 
 sudo apt-get -y install neovim
 sudo apt-get -y install clang-format
+# neovim requires a copy-paste tool to exist. Neovim does not talk to system
+# directly.
+sudo apt-get -y install sel
 
 
 # exe curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
