@@ -10,7 +10,7 @@ services:
 
 script:
   - docker build -t test:v1 .
-  - docker run test
+  - docker run --rm test:v1
 
 # Stale configs
 # # Travis CI is powered with Ubuntu 12.04, whose toolchain is outdated.
