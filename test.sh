@@ -21,7 +21,7 @@ exe g++ --version && \
 exe clang --version && \
 exe clang++ --version && \
 exe python --version && \
-exe ipython --version && \
+# exe ipython --version && \
 exe git --version && \
 exe tmux -V && \
 exe cmake --version && \
@@ -30,13 +30,13 @@ exe curl --version && \
 # On company machine, I have llvm-config-3.4 but not llvm-config in my PATH
 # exe llvm-config --version && \
 # Checking meld cause error in Travis CI
-# exe meld --help > /dev/null && \
+exe which meld && \
 exe pip --version && \
 exe cgdb --version && \
-exe go version && \
+# exe go version && \
 
 # libraries
-exe ldconfig -p | grep libcgraph
+# exe ldconfig -p | grep libcgraph
 
 if [ $? -ne 0 ]; then
   echo "Check System Packages failed"
@@ -65,8 +65,8 @@ echo -e \
   ################################
   "
 
-exe yapf --version && \
-exe virtualenv --version && \
+exe $HOME/.local/bin/yapf --version && \
+# exe virtualenv --version && \
 
 
 if [ $? -ne 0 ]; then
@@ -83,7 +83,6 @@ echo -e \
 
 # Check the existance of vim-plugin dirs.
 VIM_PLUGINS="
-  Vundle.vim
   YouCompleteMe
   ctrlp.vim
   nerdcommenter
@@ -98,8 +97,8 @@ VIM_PLUGINS="
 
 for PLUGIN in $VIM_PLUGINS; do
   echo "Checking: $PLUGIN"
-  if [ ! -d "$HOME/.vim/bundle/$PLUGIN" ]; then
-    echo "ERROR: "$HOME/.vim/bundle/$PLUGIN" not found." && \
+  if [ ! -d "$HOME/.vim/plugged/$PLUGIN" ]; then
+    echo "ERROR: "$HOME/.vim/plugged/$PLUGIN" not found." && \
     exit 1
   fi
 done

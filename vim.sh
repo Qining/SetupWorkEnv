@@ -9,7 +9,7 @@ me=`basename "$0"`
 trap 'echo Ctrl-c, Setup ${me} interrupted; exit' INT
 echo "${me} -- Start"
 
-sudo apt-get -y install vim
+sudo apt-get -y install vim curl git
 # On Ubuntu 16.04, default vim is compiled with python3, but we
 # may need python2 support.
 # sudo apt-get -y install vim-gnome-py2
