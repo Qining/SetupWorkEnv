@@ -15,6 +15,9 @@ sudo apt-get -y install vim curl git
 # sudo apt-get -y install vim-gnome-py2
 sudo apt-get -y install clang-format
 
+# Set the default editor of git to vim
+exe git config --global core.editor vim
+
 exe curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 

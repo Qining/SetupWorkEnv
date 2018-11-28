@@ -1,10 +1,10 @@
 FROM ubuntu
 
-RUN apt-get update && apt-get install -y sudo git && adduser root sudo
+COPY . /root/SetupWorkEnv
 
-WORKDIR /root
-RUN git clone https://github.com/Qining/SetupWorkEnv && /root/SetupWorkEnv/DumpCurrentEnv.sh
 WORKDIR /root/SetupWorkEnv
+
+RUN apt-get update && apt-get install -y sudo git && adduser root sudo
 
 RUN ./DumpCurrentEnv.sh env_original.sh && ./basic.sh && ./cgdb.sh && ./python.sh && ./rtags.sh && ./vim.sh && ./neovim.sh && ./tmux.sh
 
