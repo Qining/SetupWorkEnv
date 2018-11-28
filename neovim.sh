@@ -19,6 +19,8 @@ sudo apt-get -y install clang-format
 # neovim requires a copy-paste tool to exist. Neovim does not talk to system
 # directly.
 sudo apt-get -y install sel
+# Need python 2 support
+sudo apt-get -y install python-dev python-pip python-setuptools
 
 
 # exe curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -26,5 +28,8 @@ sudo apt-get -y install sel
 
 exe mkdir -p $HOME/.config/nvim
 exe cp $SCRIPT_DIR/nvim/init.vim $HOME/.config/nvim/init.vim
+
+# Add python 2 support
+exe pip2 install --user neovim
 
 echo "${me} -- Done"

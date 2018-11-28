@@ -93,6 +93,7 @@ VIM_PLUGINS="
   vim-sneak
   vim-better-whitespace
   vim-clang-format
+  vim-yapf-format
   "
 
 for PLUGIN in $VIM_PLUGINS; do
