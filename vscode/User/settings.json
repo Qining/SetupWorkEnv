@@ -9,6 +9,7 @@
     "editor.rulers": [80],
     "window.zoomLevel": 0,
     "explorer.confirmDragAndDrop": false,
+    "editor.tabCompletion": "on",
 
     /* ==== C++ style ==== */
     "C_Cpp.clang_format_fallbackStyle": "Google",
@@ -47,21 +48,11 @@
     "vim.visualstar": true,
     // Status bar looks like airline
     "vim.statusBarColorControl": true,
-    "vim.statusBarColors" : {
-        "normal": "#005f5f",
-        "insert": "#5f0000",
-        "visual": "#5f00af",
-        "visualline": "#005f87",
-        "visualblock": "#86592d",
-        "replace": "#000000"
-    },
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
         "statusBar.debuggingBackground": "#005f5f"
     },
-    // Prefer to see the initial colon in command
-    "vim.cmdLineInitialColon": true,
     // Show the command I'm in
     "vim.showcmd": true,
     // Searching case
