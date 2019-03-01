@@ -15,3 +15,6 @@ set mark-symlinked-directories on
 
 # show all candidates directly
 set show-all-if-ambiguous on
+
+# do not modify history
+set revert-all-at-newline on
