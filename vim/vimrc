@@ -34,8 +34,10 @@ Plug 'bling/vim-airline'
 Plug 'mhinz/vim-signify'
 " Plug 'majutsushi/tagbar'
 " Plug 'ervandew/supertab'
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'jlanzarotta/bufexplorer'
+Plug 'kien/tabman.vim'
 Plug 'mileszs/ack.vim'
+Plug 'jeetsukumaran/vim-buffergator'
 
 "" language
 Plug 'Valloric/YouCompleteMe', {'for': ['cpp', 'c', 'objcpp', 'objc', 'go', 'java']}
@@ -268,3 +270,6 @@ set expandtab
 "" disable folding
 set nofoldenable
 set foldmethod=indent
+
+"" auto resize splits
+autocmd VimResized * wincmd =
