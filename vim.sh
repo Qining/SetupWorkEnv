@@ -14,6 +14,7 @@ sudo apt-get -y install vim curl git
 # may need python2 support.
 # sudo apt-get -y install vim-gnome-py2
 sudo apt-get -y install clang-format
+sudo apt-get -y silversearcher-ag
 
 # Set the default editor of git to vim
 exe git config --global core.editor vim

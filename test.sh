@@ -94,6 +94,9 @@ VIM_PLUGINS="
   vim-better-whitespace
   vim-clang-format
   vim-yapf-format
+  ack.vim
+  bufexplorer
+  vim-signify
   "
 
 for PLUGIN in $VIM_PLUGINS; do

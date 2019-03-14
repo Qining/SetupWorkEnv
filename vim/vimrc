@@ -31,8 +31,11 @@ Plug 'thinca/vim-localrc'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
+Plug 'mhinz/vim-signify'
 " Plug 'majutsushi/tagbar'
 " Plug 'ervandew/supertab'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'mileszs/ack.vim'
 
 "" language
 Plug 'Valloric/YouCompleteMe', {'for': ['cpp', 'c', 'objcpp', 'objc', 'go', 'java']}
@@ -103,6 +106,12 @@ let g:sneak#use_ic_scs=1
 """" syntastic settings
 "" populate location list
 let g:syntastic_always_populate_loc_list=1
+"" set passive mode for some file types
+""  may conflict with vim-go
+let g:syntastic_mode_map = {
+      \ "mode": "active",
+      \ "passive_filetypes": ["go"],
+      \ }
 
 """" vim-indent-guide settings
 let g:indent_guides_start_level=2
@@ -127,6 +136,31 @@ nnoremap <F8> :TagbarToggle<CR>
 """" ctrlp settings
 "" Use <leader>f to trigger fuzzy buffer search of CtrlP
 nnoremap F :CtrlPLine<CR>
+"" Usually METADATA file is the root of a project
+let g:ctrlp_root_markers = ['METADATA']
+"" Use AG for ctrlp
+if executable('ag')
+  " use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " use ag for listing files
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .DS_Store
+        \ --ignore "**/*.pyc"
+        \ --ignore .hg
+        \ --ignore review
+        \ -g ""'
+  let g:ctrlp_use_caching=0
+endif
+
+"""" Ack settings
+"" use ag if possible
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+"" highlight search term
+let g:ackhighlight = 1
 
 "################################
 "####### generic settings #######
@@ -233,3 +267,4 @@ set expandtab
 
 "" disable folding
 set nofoldenable
+set foldmethod=indent

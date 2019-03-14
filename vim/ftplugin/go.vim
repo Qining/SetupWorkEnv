@@ -17,7 +17,3 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
-"""" syntastic settings with vim-go
-let b:syntastic_go_checkers=['go', 'golint', 'govet', 'errcheck']
-let b:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
