@@ -125,7 +125,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=darkgrey
 
 """" NerdTree settings
 "" Toggle folder tree split
-map <leader>ne :NERDTree<CR>
+map <leader>ne :NERDTreeFind<CR>
 
 """" NerdCommenter settings
 "" Add a blank space before commented content
