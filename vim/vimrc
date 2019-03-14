@@ -202,6 +202,11 @@ set hlsearch
 "" if /<upper case>, only return upper case results.
 set ignorecase
 set smartcase
+augroup dynamic_smartcase
+  autocmd!
+  autocmd CmdLineEnter : set nosmartcase
+  autocmd CmdLineLeave : set smartcase
+augroup END
 
 "" Enable the autocompletion little menu
 set wildmenu
