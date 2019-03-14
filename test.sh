@@ -95,7 +95,6 @@ VIM_PLUGINS="
   vim-clang-format
   vim-yapf-format
   ack.vim
-  bufexplorer
   vim-signify
   "
 
